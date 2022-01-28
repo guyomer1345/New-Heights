@@ -1,0 +1,550 @@
+. 2018-08-30 23:47:02.304 --------------------------------------------------------------------------
+. 2018-08-30 23:47:02.304 WinSCP Version 5.9.3 (Build 7136) (OS 10.0.17134 - Windows 10 Home)
+. 2018-08-30 23:47:02.305 Configuration: C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini
+. 2018-08-30 23:47:02.305 Log level: Normal
+. 2018-08-30 23:47:02.305 Local account: DOWNMASTER\Talgams
+. 2018-08-30 23:47:02.305 Working directory: C:\Heights\PortableApps\WinSCPPortable\App\WinSCP
+. 2018-08-30 23:47:02.305 Process ID: 9580
+. 2018-08-30 23:47:02.305 Command-line: "C:\Heights\PortableApps\WinSCPPortable\App\WinSCP\WinSCP.exe" /ini="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini" /log="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.log"
+. 2018-08-30 23:47:02.307 Time zone: Current: GMT+3, Standard: GMT+2 (Jerusalem Standard Time), DST: GMT+3 (Jerusalem Daylight Time), DST Start: 3/23/2018, DST End: 10/28/2018
+. 2018-08-30 23:47:02.307 Login time: Thursday, August 30, 2018 11:47:02 PM
+. 2018-08-30 23:47:02.307 --------------------------------------------------------------------------
+. 2018-08-30 23:47:02.307 Session name: 192.168.1.106 (Ad-Hoc site)
+. 2018-08-30 23:47:02.307 Host name: 192.168.1.106 (Port: 22)
+. 2018-08-30 23:47:02.307 User name:  (Password: No, Key file: No, Passphrase: No)
+. 2018-08-30 23:47:02.307 Tunnel: No
+. 2018-08-30 23:47:02.307 Transfer Protocol: SFTP (SCP)
+. 2018-08-30 23:47:02.307 Ping type: Off, Ping interval: 30 sec; Timeout: 15 sec
+. 2018-08-30 23:47:02.307 Disable Nagle: No
+. 2018-08-30 23:47:02.307 Proxy: None
+. 2018-08-30 23:47:02.307 Send buffer: 262144
+. 2018-08-30 23:47:02.307 SSH protocol version: 2; Compression: No
+. 2018-08-30 23:47:02.307 Bypass authentication: No
+. 2018-08-30 23:47:02.307 Try agent: Yes; Agent forwarding: No; TIS/CryptoCard: No; KI: Yes; GSSAPI: No
+. 2018-08-30 23:47:02.307 Ciphers: aes,chacha20,blowfish,3des,WARN,arcfour,des; Ssh2DES: No
+. 2018-08-30 23:47:02.307 KEX: ecdh,dh-gex-sha1,dh-group14-sha1,rsa,WARN,dh-group1-sha1
+. 2018-08-30 23:47:02.307 SSH Bugs: Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto
+. 2018-08-30 23:47:02.307 Simple channel: Yes
+. 2018-08-30 23:47:02.307 Return code variable: Autodetect; Lookup user groups: Auto
+. 2018-08-30 23:47:02.307 Shell: default
+. 2018-08-30 23:47:02.307 EOL: LF, UTF: Auto
+. 2018-08-30 23:47:02.307 Clear aliases: Yes, Unset nat.vars: Yes, Resolve symlinks: Yes; Follow directory symlinks: No
+. 2018-08-30 23:47:02.307 LS: ls -la, Ign LS warn: Yes, Scp1 Comp: No
+. 2018-08-30 23:47:02.307 SFTP Bugs: Auto,Auto
+. 2018-08-30 23:47:02.307 SFTP Server: default
+. 2018-08-30 23:47:02.307 Local directory: default, Remote directory: home, Update: Yes, Cache: Yes
+. 2018-08-30 23:47:02.307 Cache directory changes: Yes, Permanent: Yes
+. 2018-08-30 23:47:02.307 Recycle bin: Delete to: No, Overwritten to: No, Bin path: 
+. 2018-08-30 23:47:02.307 DST mode: Unix
+. 2018-08-30 23:47:02.307 --------------------------------------------------------------------------
+. 2018-08-30 23:47:02.497 Looking up host "192.168.1.106" for SSH connection
+. 2018-08-30 23:47:02.497 Connecting to 192.168.1.106 port 22
+. 2018-08-30 23:47:03.500 Failed to connect to 192.168.1.106: Network error: Connection refused
+. 2018-08-30 23:47:03.500 Knocking FTP port.
+. 2018-08-30 23:47:04.504 FTP port opened, will suggest using FTP protocol.
+* 2018-08-30 23:47:04.523 (EFatal) Network error: Connection to "192.168.1.106" refused.
+* 2018-08-30 23:47:04.523 The server rejected SFTP connection, but it listens for FTP connections.
+* 2018-08-30 23:47:04.523 
+* 2018-08-30 23:47:04.523 Did you want to use FTP protocol instead of SFTP? Prefer using encryption.
+. 2018-08-30 23:47:16.572 --------------------------------------------------------------------------
+. 2018-08-30 23:47:16.572 WinSCP Version 5.9.3 (Build 7136) (OS 10.0.17134 - Windows 10 Home)
+. 2018-08-30 23:47:16.572 Configuration: C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini
+. 2018-08-30 23:47:16.572 Log level: Normal
+. 2018-08-30 23:47:16.572 Local account: DOWNMASTER\Talgams
+. 2018-08-30 23:47:16.572 Working directory: C:\Heights\PortableApps\WinSCPPortable\App\WinSCP
+. 2018-08-30 23:47:16.572 Process ID: 9580
+. 2018-08-30 23:47:16.572 Command-line: "C:\Heights\PortableApps\WinSCPPortable\App\WinSCP\WinSCP.exe" /ini="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini" /log="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.log"
+. 2018-08-30 23:47:16.572 Time zone: Current: GMT+3, Standard: GMT+2 (Jerusalem Standard Time), DST: GMT+3 (Jerusalem Daylight Time), DST Start: 3/23/2018, DST End: 10/28/2018
+. 2018-08-30 23:47:16.572 Login time: Thursday, August 30, 2018 11:47:16 PM
+. 2018-08-30 23:47:16.572 --------------------------------------------------------------------------
+. 2018-08-30 23:47:16.572 Session name: 192.168.1.106 (Ad-Hoc site)
+. 2018-08-30 23:47:16.572 Host name: 192.168.1.106 (Port: 21)
+. 2018-08-30 23:47:16.572 User name:  (Password: No, Key file: No, Passphrase: No)
+. 2018-08-30 23:47:16.572 Transfer Protocol: FTP
+. 2018-08-30 23:47:16.572 Ping type: Dummy, Ping interval: 30 sec; Timeout: 15 sec
+. 2018-08-30 23:47:16.572 Disable Nagle: No
+. 2018-08-30 23:47:16.572 Proxy: None
+. 2018-08-30 23:47:16.572 Send buffer: 262144
+. 2018-08-30 23:47:16.572 UTF: Auto
+. 2018-08-30 23:47:16.572 FTPS: None [Client certificate: No]
+. 2018-08-30 23:47:16.572 FTP: Passive: Yes [Force IP: Auto]; MLSD: Auto [List all: Auto]; HOST: Auto
+. 2018-08-30 23:47:16.572 Local directory: default, Remote directory: home, Update: Yes, Cache: Yes
+. 2018-08-30 23:47:16.572 Cache directory changes: Yes, Permanent: Yes
+. 2018-08-30 23:47:16.572 Recycle bin: Delete to: No, Overwritten to: No, Bin path: 
+. 2018-08-30 23:47:16.572 Timezone offset: 0h 0m
+. 2018-08-30 23:47:16.572 --------------------------------------------------------------------------
+. 2018-08-30 23:47:16.573 Username prompt (no username provided)
+. 2018-08-30 23:47:21.024 Connecting to 192.168.1.106 ...
+. 2018-08-30 23:47:21.977 No connection could be made because the target machine actively refused it.
+. 2018-08-30 23:47:21.977 Connection failed.
+* 2018-08-30 23:47:21.988 (EFatal) Connection failed.
+* 2018-08-30 23:47:21.988 No connection could be made because the target machine actively refused it.
+* 2018-08-30 23:47:21.988 Connection failed.
+. 2018-08-30 23:47:31.356 --------------------------------------------------------------------------
+. 2018-08-30 23:47:31.356 WinSCP Version 5.9.3 (Build 7136) (OS 10.0.17134 - Windows 10 Home)
+. 2018-08-30 23:47:31.357 Configuration: C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini
+. 2018-08-30 23:47:31.357 Log level: Normal
+. 2018-08-30 23:47:31.357 Local account: DOWNMASTER\Talgams
+. 2018-08-30 23:47:31.357 Working directory: C:\Heights\PortableApps\WinSCPPortable\App\WinSCP
+. 2018-08-30 23:47:31.357 Process ID: 9580
+. 2018-08-30 23:47:31.357 Command-line: "C:\Heights\PortableApps\WinSCPPortable\App\WinSCP\WinSCP.exe" /ini="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini" /log="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.log"
+. 2018-08-30 23:47:31.357 Time zone: Current: GMT+3, Standard: GMT+2 (Jerusalem Standard Time), DST: GMT+3 (Jerusalem Daylight Time), DST Start: 3/23/2018, DST End: 10/28/2018
+. 2018-08-30 23:47:31.357 Login time: Thursday, August 30, 2018 11:47:31 PM
+. 2018-08-30 23:47:31.357 --------------------------------------------------------------------------
+. 2018-08-30 23:47:31.357 Session name: 192.168.1.106 (Ad-Hoc site)
+. 2018-08-30 23:47:31.357 Host name: 192.168.1.106 (Port: 22)
+. 2018-08-30 23:47:31.357 User name:  (Password: No, Key file: No, Passphrase: No)
+. 2018-08-30 23:47:31.357 Tunnel: No
+. 2018-08-30 23:47:31.357 Transfer Protocol: SCP
+. 2018-08-30 23:47:31.357 Ping type: Off, Ping interval: 30 sec; Timeout: 15 sec
+. 2018-08-30 23:47:31.357 Disable Nagle: No
+. 2018-08-30 23:47:31.357 Proxy: None
+. 2018-08-30 23:47:31.357 Send buffer: 262144
+. 2018-08-30 23:47:31.357 SSH protocol version: 2; Compression: No
+. 2018-08-30 23:47:31.357 Bypass authentication: No
+. 2018-08-30 23:47:31.357 Try agent: Yes; Agent forwarding: No; TIS/CryptoCard: No; KI: Yes; GSSAPI: No
+. 2018-08-30 23:47:31.357 Ciphers: aes,chacha20,blowfish,3des,WARN,arcfour,des; Ssh2DES: No
+. 2018-08-30 23:47:31.357 KEX: ecdh,dh-gex-sha1,dh-group14-sha1,rsa,WARN,dh-group1-sha1
+. 2018-08-30 23:47:31.357 SSH Bugs: Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto
+. 2018-08-30 23:47:31.357 Simple channel: Yes
+. 2018-08-30 23:47:31.357 Return code variable: Autodetect; Lookup user groups: Auto
+. 2018-08-30 23:47:31.357 Shell: default
+. 2018-08-30 23:47:31.357 EOL: LF, UTF: Auto
+. 2018-08-30 23:47:31.357 Clear aliases: Yes, Unset nat.vars: Yes, Resolve symlinks: Yes; Follow directory symlinks: No
+. 2018-08-30 23:47:31.357 LS: ls -la, Ign LS warn: Yes, Scp1 Comp: No
+. 2018-08-30 23:47:31.357 Local directory: default, Remote directory: home, Update: Yes, Cache: Yes
+. 2018-08-30 23:47:31.357 Cache directory changes: Yes, Permanent: Yes
+. 2018-08-30 23:47:31.357 Recycle bin: Delete to: No, Overwritten to: No, Bin path: 
+. 2018-08-30 23:47:31.357 DST mode: Unix;Timezone offset: 0h 0m
+. 2018-08-30 23:47:31.357 --------------------------------------------------------------------------
+. 2018-08-30 23:47:31.416 Looking up host "192.168.1.106" for SSH connection
+. 2018-08-30 23:47:31.416 Connecting to 192.168.1.106 port 22
+. 2018-08-30 23:47:32.418 Failed to connect to 192.168.1.106: Network error: Connection refused
+. 2018-08-30 23:47:32.418 Using non-standard protocol or port, tunnel or proxy, will not knock FTP port.
+* 2018-08-30 23:47:32.435 (EFatal) Network error: Connection to "192.168.1.106" refused.
+. 2019-05-09 00:35:27.121 --------------------------------------------------------------------------
+. 2019-05-09 00:35:27.122 WinSCP Version 5.9.3 (Build 7136) (OS 10.0.17134 - Windows 10 Home)
+. 2019-05-09 00:35:27.123 Configuration: C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini
+. 2019-05-09 00:35:27.123 Log level: Normal
+. 2019-05-09 00:35:27.123 Local account: DOWNMASTER\Talgams
+. 2019-05-09 00:35:27.123 Working directory: C:\Heights\PortableApps\WinSCPPortable\App\WinSCP
+. 2019-05-09 00:35:27.123 Process ID: 9768
+. 2019-05-09 00:35:27.123 Command-line: "C:\Heights\PortableApps\WinSCPPortable\App\WinSCP\WinSCP.exe" /ini="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini" /log="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.log"
+. 2019-05-09 00:35:27.123 Time zone: Current: GMT+3, Standard: GMT+2 (Jerusalem Standard Time), DST: GMT+3 (Jerusalem Daylight Time), DST Start: 3/29/2019, DST End: 10/27/2019
+. 2019-05-09 00:35:27.124 Login time: Thursday, May 9, 2019 12:35:27 AM
+. 2019-05-09 00:35:27.124 --------------------------------------------------------------------------
+. 2019-05-09 00:35:27.124 Session name: dev.missilesys.com (Ad-Hoc site)
+. 2019-05-09 00:35:27.124 Host name: dev.missilesys.com (Port: 443)
+. 2019-05-09 00:35:27.124 User name:  (Password: No, Key file: No, Passphrase: No)
+. 2019-05-09 00:35:27.124 Transfer Protocol: WebDAV
+. 2019-05-09 00:35:27.124 Proxy: None
+. 2019-05-09 00:35:27.124 HTTPS: Yes [Client certificate: No]
+. 2019-05-09 00:35:27.124 TLS/SSL versions: TLSv1.0-TLSv1.2
+. 2019-05-09 00:35:27.124 Local directory: default, Remote directory: home, Update: Yes, Cache: Yes
+. 2019-05-09 00:35:27.124 Cache directory changes: Yes, Permanent: Yes
+. 2019-05-09 00:35:27.124 Recycle bin: Delete to: No, Overwritten to: No, Bin path: 
+. 2019-05-09 00:35:27.124 DST mode: Unix
+. 2019-05-09 00:35:27.124 Compression: No
+. 2019-05-09 00:35:27.124 --------------------------------------------------------------------------
+. 2019-05-09 00:35:27.382 HTTP session to https://dev.missilesys.com:443 begins.
+. 2019-05-09 00:35:27.383 ssl: SNI enabled by default.
+. 2019-05-09 00:35:27.383 ah_create, for WWW-Authenticate
+. 2019-05-09 00:35:27.383 Sending request headers:
+. 2019-05-09 00:35:27.383 OPTIONS / HTTP/1.1
+. 2019-05-09 00:35:27.383 User-Agent: WinSCP/5.9.3 neon/0.30.1
+. 2019-05-09 00:35:27.383 Keep-Alive: 
+. 2019-05-09 00:35:27.383 Connection: TE, Keep-Alive
+. 2019-05-09 00:35:27.383 TE: trailers
+. 2019-05-09 00:35:27.383 Host: dev.missilesys.com
+. 2019-05-09 00:35:27.383 Sending request-line and headers:
+. 2019-05-09 00:35:27.383 Doing DNS lookup on dev.missilesys.com...
+. 2019-05-09 00:35:27.383 req: Connecting to 35.246.158.51:443
+. 2019-05-09 00:35:27.452 Doing SSL negotiation.
+. 2019-05-09 00:35:27.523 ssl: Verify callback @ 0 => 20
+. 2019-05-09 00:35:27.523 ssl: Verify failures |= 8 => 8
+. 2019-05-09 00:35:27.523 ssl: Verify callback @ 0 => 21
+. 2019-05-09 00:35:27.523 ssl: Verify failures |= 8 => 8
+. 2019-05-09 00:35:27.595 Chain depth: 1
+. 2019-05-09 00:35:27.596 ssl: Match common name 'dev.missilesys.com' against ''
+. 2019-05-09 00:35:27.596 Identity match for '': bad
+. 2019-05-09 00:35:27.596 ssl: Match common name 'dev.missilesys.com' against 'dev.missilesys.com'
+. 2019-05-09 00:35:27.596 Identity match for 'dev.missilesys.com': good
+. 2019-05-09 00:35:27.596 Verifying certificate for "dev.missilesys.com" with fingerprint c0:66:05:34:81:cc:4f:0c:d6:67:07:36:04:c0:19:d7:16:79:a7:bd and 08 failures
+. 2019-05-09 00:35:27.611 Certificate failed to verify against Windows certificate store: Error: 800B0109, Chain index: 0, Element index: -1
+. 2019-05-09 00:35:27.611 Asking user:
+. 2019-05-09 00:35:27.611 **The server's certificate is not known. You have no guarantee that the server is the computer you think it is.**
+. 2019-05-09 00:35:27.611 
+. 2019-05-09 00:35:27.611 Server's certificate details follow:
+. 2019-05-09 00:35:27.611 
+. 2019-05-09 00:35:27.611 Issuer:
+. 2019-05-09 00:35:27.611 International Weapons Export Inc.
+. 2019-05-09 00:35:27.611 
+. 2019-05-09 00:35:27.611 Subject:
+. 2019-05-09 00:35:27.612 dev.missilesys.com
+. 2019-05-09 00:35:27.612 
+. 2019-05-09 00:35:27.612 Valid: 4/20/2019 9:12:01 AM - 4/19/2020 9:12:01 AM
+. 2019-05-09 00:35:27.612 
+. 2019-05-09 00:35:27.612 Fingerprint (SHA-1): c0:66:05:34:81:cc:4f:0c:d6:67:07:36:04:c0:19:d7:16:79:a7:bd
+. 2019-05-09 00:35:27.612 
+. 2019-05-09 00:35:27.612 Summary: Certificate not trusted.
+. 2019-05-09 00:35:27.612 
+. 2019-05-09 00:35:27.612 If you trust this certificate, press Yes. To connect without storing certificate, press No. To abandon the connection press Cancel.
+. 2019-05-09 00:35:27.612 
+. 2019-05-09 00:35:27.612 Continue connecting and store the certificate? ()
+. 2019-05-09 00:35:38.086 Using TLSv1.2, cipher TLSv1/SSLv3: ECDHE-RSA-AES256-GCM-SHA384, 2048 bit RSA
+. 2019-05-09 00:35:38.087 Request sent; retry is 0.
+. 2019-05-09 00:35:38.157 [status-line] < HTTP/1.1 200 OK
+. 2019-05-09 00:35:38.157 Header Name: [server], Value: [nginx/1.14.0 (Ubuntu)]
+. 2019-05-09 00:35:38.157 Header Name: [date], Value: [Wed, 08 May 2019 21:35:40 GMT]
+. 2019-05-09 00:35:38.157 Header Name: [content-type], Value: [text/html; charset=utf-8]
+. 2019-05-09 00:35:38.157 Header Name: [content-length], Value: [0]
+. 2019-05-09 00:35:38.157 Header Name: [connection], Value: [keep-alive]
+. 2019-05-09 00:35:38.157 Header Name: [allow], Value: [HEAD, GET, POST, OPTIONS]
+. 2019-05-09 00:35:38.157 End of headers.
+. 2019-05-09 00:35:38.180 ah_post_send (#0), code is 200 (want 401), WWW-Authenticate is (none)
+. 2019-05-09 00:35:38.180 Request ends, status 200 class 2xx, error line:
+. 2019-05-09 00:35:38.180 200 OK
+. 2019-05-09 00:35:38.180 Request ends.
+. 2019-05-09 00:35:38.180 --------------------------------------------------------------------------
+. 2019-05-09 00:35:38.180 Using WebDAV protocol.
+. 2019-05-09 00:35:38.180 Doing startup conversation with host.
+. 2019-05-09 00:35:38.232 Getting current directory name.
+. 2019-05-09 00:35:38.386 ah_create, for WWW-Authenticate
+> 2019-05-09 00:35:38.386 <?xml version="1.0" encoding="utf-8"?>
+> 2019-05-09 00:35:38.386 <propfind xmlns="DAV:"><allprop/></propfind>
+. 2019-05-09 00:35:38.386 Sending request headers:
+. 2019-05-09 00:35:38.386 PROPFIND / HTTP/1.1
+. 2019-05-09 00:35:38.386 User-Agent: WinSCP/5.9.3 neon/0.30.1
+. 2019-05-09 00:35:38.386 Connection: TE
+. 2019-05-09 00:35:38.386 TE: trailers
+. 2019-05-09 00:35:38.386 Host: dev.missilesys.com
+. 2019-05-09 00:35:38.386 Depth: 1
+. 2019-05-09 00:35:38.386 Content-Length: 84
+. 2019-05-09 00:35:38.386 Content-Type: application/xml
+. 2019-05-09 00:35:38.386 Sending request-line and headers:
+. 2019-05-09 00:35:38.386 Sending request body:
+. 2019-05-09 00:35:38.386 Request sent; retry is 1.
+. 2019-05-09 00:35:38.458 [status-line] < HTTP/1.1 405 METHOD NOT ALLOWED
+. 2019-05-09 00:35:38.458 Header Name: [server], Value: [nginx/1.14.0 (Ubuntu)]
+. 2019-05-09 00:35:38.458 Header Name: [date], Value: [Wed, 08 May 2019 21:35:41 GMT]
+. 2019-05-09 00:35:38.458 Header Name: [content-type], Value: [text/html]
+. 2019-05-09 00:35:38.458 Header Name: [content-length], Value: [178]
+. 2019-05-09 00:35:38.458 Header Name: [connection], Value: [keep-alive]
+. 2019-05-09 00:35:38.458 Header Name: [allow], Value: [HEAD, GET, POST, OPTIONS]
+. 2019-05-09 00:35:38.458 End of headers.
+. 2019-05-09 00:35:38.458 ah_post_send (#0), code is 405 (want 401), WWW-Authenticate is (none)
+. 2019-05-09 00:35:38.458 Request ends, status 405 class 4xx, error line:
+. 2019-05-09 00:35:38.458 405 METHOD NOT ALLOWED
+. 2019-05-09 00:35:38.458 Request ends.
+* 2019-05-09 00:35:38.538 (ECommand) Error listing directory '/'.
+* 2019-05-09 00:35:38.538 405 METHOD NOT ALLOWED
+. 2019-05-09 00:35:40.816 Startup conversation with host finished.
+. 2019-05-09 00:37:08.837 --------------------------------------------------------------------------
+. 2019-05-09 00:37:08.837 WinSCP Version 5.9.3 (Build 7136) (OS 10.0.17134 - Windows 10 Home)
+. 2019-05-09 00:37:08.838 Configuration: C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini
+. 2019-05-09 00:37:08.838 Log level: Normal
+. 2019-05-09 00:37:08.838 Local account: DOWNMASTER\Talgams
+. 2019-05-09 00:37:08.838 Working directory: C:\Heights\PortableApps\WinSCPPortable\App\WinSCP
+. 2019-05-09 00:37:08.838 Process ID: 9768
+. 2019-05-09 00:37:08.838 Command-line: "C:\Heights\PortableApps\WinSCPPortable\App\WinSCP\WinSCP.exe" /ini="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini" /log="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.log"
+. 2019-05-09 00:37:08.838 Time zone: Current: GMT+3, Standard: GMT+2 (Jerusalem Standard Time), DST: GMT+3 (Jerusalem Daylight Time), DST Start: 3/29/2019, DST End: 10/27/2019
+. 2019-05-09 00:37:08.838 Login time: Thursday, May 9, 2019 12:37:08 AM
+. 2019-05-09 00:37:08.838 --------------------------------------------------------------------------
+. 2019-05-09 00:37:08.838 Session name: dev.missilesys.com (Ad-Hoc site)
+. 2019-05-09 00:37:08.838 Host name: dev.missilesys.com (Port: 22)
+. 2019-05-09 00:37:08.838 User name:  (Password: No, Key file: No, Passphrase: No)
+. 2019-05-09 00:37:08.838 Tunnel: No
+. 2019-05-09 00:37:08.838 Transfer Protocol: SFTP
+. 2019-05-09 00:37:08.838 Ping type: Off, Ping interval: 30 sec; Timeout: 15 sec
+. 2019-05-09 00:37:08.838 Disable Nagle: No
+. 2019-05-09 00:37:08.838 Proxy: None
+. 2019-05-09 00:37:08.838 Send buffer: 262144
+. 2019-05-09 00:37:08.838 SSH protocol version: 2; Compression: No
+. 2019-05-09 00:37:08.838 Bypass authentication: No
+. 2019-05-09 00:37:08.838 Try agent: Yes; Agent forwarding: No; TIS/CryptoCard: No; KI: Yes; GSSAPI: No
+. 2019-05-09 00:37:08.838 Ciphers: aes,chacha20,blowfish,3des,WARN,arcfour,des; Ssh2DES: No
+. 2019-05-09 00:37:08.838 KEX: ecdh,dh-gex-sha1,dh-group14-sha1,rsa,WARN,dh-group1-sha1
+. 2019-05-09 00:37:08.838 SSH Bugs: Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto
+. 2019-05-09 00:37:08.838 Simple channel: Yes
+. 2019-05-09 00:37:08.838 Return code variable: Autodetect; Lookup user groups: Auto
+. 2019-05-09 00:37:08.838 Shell: default
+. 2019-05-09 00:37:08.838 EOL: LF, UTF: Auto
+. 2019-05-09 00:37:08.838 Clear aliases: Yes, Unset nat.vars: Yes, Resolve symlinks: Yes; Follow directory symlinks: No
+. 2019-05-09 00:37:08.838 LS: ls -la, Ign LS warn: Yes, Scp1 Comp: No
+. 2019-05-09 00:37:08.838 SFTP Bugs: Auto,Auto
+. 2019-05-09 00:37:08.838 SFTP Server: default
+. 2019-05-09 00:37:08.838 Local directory: default, Remote directory: home, Update: Yes, Cache: Yes
+. 2019-05-09 00:37:08.838 Cache directory changes: Yes, Permanent: Yes
+. 2019-05-09 00:37:08.838 Recycle bin: Delete to: No, Overwritten to: No, Bin path: 
+. 2019-05-09 00:37:08.838 DST mode: Unix
+. 2019-05-09 00:37:08.839 --------------------------------------------------------------------------
+. 2019-05-09 00:37:08.901 Looking up host "dev.missilesys.com" for SSH connection
+. 2019-05-09 00:37:08.902 Connecting to 35.246.158.51 port 22
+. 2019-05-09 00:37:29.904 Failed to connect to 35.246.158.51: Network error: Connection timed out
+. 2019-05-09 00:37:29.904 Knocking FTP port.
+. 2019-05-09 00:37:31.906 FTP port did not open.
+* 2019-05-09 00:37:31.928 (ESshFatal) 
+. 2019-05-09 00:37:40.777 --------------------------------------------------------------------------
+. 2019-05-09 00:37:40.777 WinSCP Version 5.9.3 (Build 7136) (OS 10.0.17134 - Windows 10 Home)
+. 2019-05-09 00:37:40.778 Configuration: C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini
+. 2019-05-09 00:37:40.778 Log level: Normal
+. 2019-05-09 00:37:40.778 Local account: DOWNMASTER\Talgams
+. 2019-05-09 00:37:40.778 Working directory: C:\Heights\PortableApps\WinSCPPortable\App\WinSCP
+. 2019-05-09 00:37:40.778 Process ID: 9768
+. 2019-05-09 00:37:40.778 Command-line: "C:\Heights\PortableApps\WinSCPPortable\App\WinSCP\WinSCP.exe" /ini="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini" /log="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.log"
+. 2019-05-09 00:37:40.778 Time zone: Current: GMT+3, Standard: GMT+2 (Jerusalem Standard Time), DST: GMT+3 (Jerusalem Daylight Time), DST Start: 3/29/2019, DST End: 10/27/2019
+. 2019-05-09 00:37:40.778 Login time: Thursday, May 9, 2019 12:37:40 AM
+. 2019-05-09 00:37:40.778 --------------------------------------------------------------------------
+. 2019-05-09 00:37:40.778 Session name: dev.missilesys.com (Ad-Hoc site)
+. 2019-05-09 00:37:40.778 Host name: dev.missilesys.com (Port: 990)
+. 2019-05-09 00:37:40.778 User name:  (Password: No, Key file: No, Passphrase: No)
+. 2019-05-09 00:37:40.778 Transfer Protocol: FTP
+. 2019-05-09 00:37:40.778 Ping type: Dummy, Ping interval: 30 sec; Timeout: 15 sec
+. 2019-05-09 00:37:40.778 Disable Nagle: No
+. 2019-05-09 00:37:40.778 Proxy: None
+. 2019-05-09 00:37:40.778 Send buffer: 262144
+. 2019-05-09 00:37:40.778 UTF: Auto
+. 2019-05-09 00:37:40.778 FTPS: Implicit TLS/SSL [Client certificate: No]
+. 2019-05-09 00:37:40.778 FTP: Passive: Yes [Force IP: Auto]; MLSD: Auto [List all: Auto]; HOST: Auto
+. 2019-05-09 00:37:40.778 Session reuse: Yes
+. 2019-05-09 00:37:40.778 TLS/SSL versions: TLSv1.0-TLSv1.2
+. 2019-05-09 00:37:40.778 Local directory: default, Remote directory: home, Update: Yes, Cache: Yes
+. 2019-05-09 00:37:40.778 Cache directory changes: Yes, Permanent: Yes
+. 2019-05-09 00:37:40.778 Recycle bin: Delete to: No, Overwritten to: No, Bin path: 
+. 2019-05-09 00:37:40.778 Timezone offset: 0h 0m
+. 2019-05-09 00:37:40.778 --------------------------------------------------------------------------
+. 2019-05-09 00:37:40.779 Username prompt (no username provided)
+. 2019-05-09 00:37:45.821 Connecting to dev.missilesys.com:990 ...
+. 2019-05-09 00:38:00.772 Timeout detected. (control connection)
+. 2019-05-09 00:38:00.772 Connection failed.
+* 2019-05-09 00:38:00.829 (EFatal) Connection failed.
+* 2019-05-09 00:38:00.829 Timeout detected. (control connection)
+* 2019-05-09 00:38:00.829 Connection failed.
+. 2019-05-09 00:38:08.448 sess: Destroying session.
+. 2019-05-09 00:38:08.448 sess: Closing connection.
+. 2019-05-09 00:38:08.448 sess: Connection closed.
+. 2019-05-09 01:39:33.461 --------------------------------------------------------------------------
+. 2019-05-09 01:39:33.462 WinSCP Version 5.9.3 (Build 7136) (OS 10.0.17134 - Windows 10 Home)
+. 2019-05-09 01:39:33.462 Configuration: C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini
+. 2019-05-09 01:39:33.462 Log level: Normal
+. 2019-05-09 01:39:33.462 Local account: DOWNMASTER\Talgams
+. 2019-05-09 01:39:33.462 Working directory: C:\Heights\PortableApps\WinSCPPortable\App\WinSCP
+. 2019-05-09 01:39:33.462 Process ID: 18812
+. 2019-05-09 01:39:33.463 Command-line: "C:\Heights\PortableApps\WinSCPPortable\App\WinSCP\WinSCP.exe" /ini="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini" /log="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.log"
+. 2019-05-09 01:39:33.463 Time zone: Current: GMT+3, Standard: GMT+2 (Jerusalem Standard Time), DST: GMT+3 (Jerusalem Daylight Time), DST Start: 3/29/2019, DST End: 10/27/2019
+. 2019-05-09 01:39:33.463 Login time: Thursday, May 9, 2019 1:39:33 AM
+. 2019-05-09 01:39:33.463 --------------------------------------------------------------------------
+. 2019-05-09 01:39:33.463 Session name: missilesys.com (Ad-Hoc site)
+. 2019-05-09 01:39:33.463 Host name: missilesys.com (Port: 22)
+. 2019-05-09 01:39:33.463 User name:  (Password: No, Key file: No, Passphrase: No)
+. 2019-05-09 01:39:33.463 Tunnel: No
+. 2019-05-09 01:39:33.463 Transfer Protocol: SFTP
+. 2019-05-09 01:39:33.463 Ping type: Off, Ping interval: 30 sec; Timeout: 15 sec
+. 2019-05-09 01:39:33.463 Disable Nagle: No
+. 2019-05-09 01:39:33.463 Proxy: None
+. 2019-05-09 01:39:33.463 Send buffer: 262144
+. 2019-05-09 01:39:33.463 SSH protocol version: 2; Compression: No
+. 2019-05-09 01:39:33.463 Bypass authentication: No
+. 2019-05-09 01:39:33.463 Try agent: Yes; Agent forwarding: No; TIS/CryptoCard: No; KI: Yes; GSSAPI: No
+. 2019-05-09 01:39:33.463 Ciphers: aes,chacha20,blowfish,3des,WARN,arcfour,des; Ssh2DES: No
+. 2019-05-09 01:39:33.463 KEX: ecdh,dh-gex-sha1,dh-group14-sha1,rsa,WARN,dh-group1-sha1
+. 2019-05-09 01:39:33.463 SSH Bugs: Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto
+. 2019-05-09 01:39:33.463 Simple channel: Yes
+. 2019-05-09 01:39:33.463 Return code variable: Autodetect; Lookup user groups: Auto
+. 2019-05-09 01:39:33.463 Shell: default
+. 2019-05-09 01:39:33.463 EOL: LF, UTF: Auto
+. 2019-05-09 01:39:33.463 Clear aliases: Yes, Unset nat.vars: Yes, Resolve symlinks: Yes; Follow directory symlinks: No
+. 2019-05-09 01:39:33.463 LS: ls -la, Ign LS warn: Yes, Scp1 Comp: No
+. 2019-05-09 01:39:33.463 SFTP Bugs: Auto,Auto
+. 2019-05-09 01:39:33.463 SFTP Server: default
+. 2019-05-09 01:39:33.463 Local directory: default, Remote directory: home, Update: Yes, Cache: Yes
+. 2019-05-09 01:39:33.463 Cache directory changes: Yes, Permanent: Yes
+. 2019-05-09 01:39:33.463 Recycle bin: Delete to: No, Overwritten to: No, Bin path: 
+. 2019-05-09 01:39:33.463 DST mode: Unix
+. 2019-05-09 01:39:33.463 --------------------------------------------------------------------------
+. 2019-05-09 01:39:33.709 Looking up host "missilesys.com" for SSH connection
+. 2019-05-09 01:39:33.709 Connecting to 35.246.158.51 port 22
+. 2019-05-09 01:39:54.711 Failed to connect to 35.246.158.51: Network error: Connection timed out
+. 2019-05-09 01:39:54.711 Knocking FTP port.
+. 2019-05-09 01:39:56.712 FTP port did not open.
+* 2019-05-09 01:39:56.757 (EFatal) Network error: Connection to "missilesys.com" timed out.
+. 2020-03-29 03:11:26.526 --------------------------------------------------------------------------
+. 2020-03-29 03:11:26.528 WinSCP Version 5.9.3 (Build 7136) (OS 10.0.18362 - Windows 10 Home)
+. 2020-03-29 03:11:26.529 Configuration: C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini
+. 2020-03-29 03:11:26.530 Log level: Normal
+. 2020-03-29 03:11:26.530 Local account: DOWNMASTER\Talgams
+. 2020-03-29 03:11:26.530 Working directory: C:\Heights\PortableApps\WinSCPPortable\App\WinSCP
+. 2020-03-29 03:11:26.530 Process ID: 20096
+. 2020-03-29 03:11:26.532 Command-line: "C:\Heights\PortableApps\WinSCPPortable\App\WinSCP\WinSCP.exe" /ini="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini" /log="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.log"
+. 2020-03-29 03:11:26.532 Time zone: Current: GMT+3, Standard: GMT+2 (Jerusalem Standard Time), DST: GMT+3 (Jerusalem Daylight Time), DST Start: 3/27/2020, DST End: 10/25/2020
+. 2020-03-29 03:11:26.532 Login time: Sunday, March 29, 2020 3:11:26 AM
+. 2020-03-29 03:11:26.532 --------------------------------------------------------------------------
+. 2020-03-29 03:11:26.532 Session name: learner@10.0.2.15 (Ad-Hoc site)
+. 2020-03-29 03:11:26.533 Host name: 10.0.2.15 (Port: 22)
+. 2020-03-29 03:11:26.533 User name: learner (Password: No, Key file: No, Passphrase: No)
+. 2020-03-29 03:11:26.533 Tunnel: No
+. 2020-03-29 03:11:26.533 Transfer Protocol: SFTP (SCP)
+. 2020-03-29 03:11:26.533 Ping type: Off, Ping interval: 30 sec; Timeout: 15 sec
+. 2020-03-29 03:11:26.533 Disable Nagle: No
+. 2020-03-29 03:11:26.533 Proxy: None
+. 2020-03-29 03:11:26.533 Send buffer: 262144
+. 2020-03-29 03:11:26.533 SSH protocol version: 2; Compression: No
+. 2020-03-29 03:11:26.533 Bypass authentication: No
+. 2020-03-29 03:11:26.533 Try agent: Yes; Agent forwarding: No; TIS/CryptoCard: No; KI: Yes; GSSAPI: No
+. 2020-03-29 03:11:26.533 Ciphers: aes,chacha20,blowfish,3des,WARN,arcfour,des; Ssh2DES: No
+. 2020-03-29 03:11:26.533 KEX: ecdh,dh-gex-sha1,dh-group14-sha1,rsa,WARN,dh-group1-sha1
+. 2020-03-29 03:11:26.533 SSH Bugs: Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto
+. 2020-03-29 03:11:26.533 Simple channel: Yes
+. 2020-03-29 03:11:26.533 Return code variable: Autodetect; Lookup user groups: Auto
+. 2020-03-29 03:11:26.533 Shell: default
+. 2020-03-29 03:11:26.534 EOL: LF, UTF: Auto
+. 2020-03-29 03:11:26.534 Clear aliases: Yes, Unset nat.vars: Yes, Resolve symlinks: Yes; Follow directory symlinks: No
+. 2020-03-29 03:11:26.534 LS: ls -la, Ign LS warn: Yes, Scp1 Comp: No
+. 2020-03-29 03:11:26.534 SFTP Bugs: Auto,Auto
+. 2020-03-29 03:11:26.534 SFTP Server: default
+. 2020-03-29 03:11:26.534 Local directory: default, Remote directory: home, Update: Yes, Cache: Yes
+. 2020-03-29 03:11:26.534 Cache directory changes: Yes, Permanent: Yes
+. 2020-03-29 03:11:26.534 Recycle bin: Delete to: No, Overwritten to: No, Bin path: 
+. 2020-03-29 03:11:26.534 DST mode: Unix
+. 2020-03-29 03:11:26.534 --------------------------------------------------------------------------
+. 2020-03-29 03:11:26.864 Looking up host "10.0.2.15" for SSH connection
+. 2020-03-29 03:11:26.864 Connecting to 10.0.2.15 port 22
+. 2020-03-29 03:11:47.866 Failed to connect to 10.0.2.15: Network error: Connection timed out
+. 2020-03-29 03:11:47.866 Knocking FTP port.
+. 2020-03-29 03:11:49.879 FTP port did not open.
+* 2020-03-29 03:11:49.898 (EFatal) Network error: Connection to "10.0.2.15" timed out.
+. 2020-03-29 03:11:59.038 --------------------------------------------------------------------------
+. 2020-03-29 03:11:59.039 WinSCP Version 5.9.3 (Build 7136) (OS 10.0.18362 - Windows 10 Home)
+. 2020-03-29 03:11:59.040 Configuration: C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini
+. 2020-03-29 03:11:59.041 Log level: Normal
+. 2020-03-29 03:11:59.041 Local account: DOWNMASTER\Talgams
+. 2020-03-29 03:11:59.041 Working directory: C:\Heights\PortableApps\WinSCPPortable\App\WinSCP
+. 2020-03-29 03:11:59.041 Process ID: 20096
+. 2020-03-29 03:11:59.042 Command-line: "C:\Heights\PortableApps\WinSCPPortable\App\WinSCP\WinSCP.exe" /ini="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini" /log="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.log"
+. 2020-03-29 03:11:59.043 Time zone: Current: GMT+3, Standard: GMT+2 (Jerusalem Standard Time), DST: GMT+3 (Jerusalem Daylight Time), DST Start: 3/27/2020, DST End: 10/25/2020
+. 2020-03-29 03:11:59.043 Login time: Sunday, March 29, 2020 3:11:59 AM
+. 2020-03-29 03:11:59.043 --------------------------------------------------------------------------
+. 2020-03-29 03:11:59.043 Session name: learner@10.0.2.15 (Ad-Hoc site)
+. 2020-03-29 03:11:59.043 Host name: 10.0.2.15 (Port: 22)
+. 2020-03-29 03:11:59.043 User name: learner (Password: No, Key file: No, Passphrase: No)
+. 2020-03-29 03:11:59.043 Tunnel: No
+. 2020-03-29 03:11:59.043 Transfer Protocol: SFTP (SCP)
+. 2020-03-29 03:11:59.043 Ping type: Off, Ping interval: 30 sec; Timeout: 15 sec
+. 2020-03-29 03:11:59.044 Disable Nagle: No
+. 2020-03-29 03:11:59.044 Proxy: None
+. 2020-03-29 03:11:59.044 Send buffer: 262144
+. 2020-03-29 03:11:59.044 SSH protocol version: 2; Compression: No
+. 2020-03-29 03:11:59.044 Bypass authentication: No
+. 2020-03-29 03:11:59.044 Try agent: Yes; Agent forwarding: No; TIS/CryptoCard: No; KI: Yes; GSSAPI: No
+. 2020-03-29 03:11:59.044 Ciphers: aes,chacha20,blowfish,3des,WARN,arcfour,des; Ssh2DES: No
+. 2020-03-29 03:11:59.044 KEX: ecdh,dh-gex-sha1,dh-group14-sha1,rsa,WARN,dh-group1-sha1
+. 2020-03-29 03:11:59.044 SSH Bugs: Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto
+. 2020-03-29 03:11:59.044 Simple channel: Yes
+. 2020-03-29 03:11:59.044 Return code variable: Autodetect; Lookup user groups: Auto
+. 2020-03-29 03:11:59.044 Shell: default
+. 2020-03-29 03:11:59.044 EOL: LF, UTF: Auto
+. 2020-03-29 03:11:59.044 Clear aliases: Yes, Unset nat.vars: Yes, Resolve symlinks: Yes; Follow directory symlinks: No
+. 2020-03-29 03:11:59.044 LS: ls -la, Ign LS warn: Yes, Scp1 Comp: No
+. 2020-03-29 03:11:59.044 SFTP Bugs: Auto,Auto
+. 2020-03-29 03:11:59.044 SFTP Server: default
+. 2020-03-29 03:11:59.044 Local directory: default, Remote directory: home, Update: Yes, Cache: Yes
+. 2020-03-29 03:11:59.044 Cache directory changes: Yes, Permanent: Yes
+. 2020-03-29 03:11:59.045 Recycle bin: Delete to: No, Overwritten to: No, Bin path: 
+. 2020-03-29 03:11:59.045 DST mode: Unix
+. 2020-03-29 03:11:59.045 --------------------------------------------------------------------------
+. 2020-03-29 03:11:59.139 Looking up host "10.0.2.15" for SSH connection
+. 2020-03-29 03:11:59.139 Connecting to 10.0.2.15 port 22
+. 2020-03-29 03:12:20.143 Failed to connect to 10.0.2.15: Network error: Connection timed out
+. 2020-03-29 03:12:20.143 Knocking FTP port.
+. 2020-03-29 03:12:22.144 FTP port did not open.
+* 2020-03-29 03:12:22.164 (EFatal) Network error: Connection to "10.0.2.15" timed out.
+. 2020-03-29 03:12:31.253 --------------------------------------------------------------------------
+. 2020-03-29 03:12:31.254 WinSCP Version 5.9.3 (Build 7136) (OS 10.0.18362 - Windows 10 Home)
+. 2020-03-29 03:12:31.255 Configuration: C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini
+. 2020-03-29 03:12:31.256 Log level: Normal
+. 2020-03-29 03:12:31.256 Local account: DOWNMASTER\Talgams
+. 2020-03-29 03:12:31.256 Working directory: C:\Heights\PortableApps\WinSCPPortable\App\WinSCP
+. 2020-03-29 03:12:31.256 Process ID: 20096
+. 2020-03-29 03:12:31.257 Command-line: "C:\Heights\PortableApps\WinSCPPortable\App\WinSCP\WinSCP.exe" /ini="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini" /log="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.log"
+. 2020-03-29 03:12:31.257 Time zone: Current: GMT+3, Standard: GMT+2 (Jerusalem Standard Time), DST: GMT+3 (Jerusalem Daylight Time), DST Start: 3/27/2020, DST End: 10/25/2020
+. 2020-03-29 03:12:31.258 Login time: Sunday, March 29, 2020 3:12:31 AM
+. 2020-03-29 03:12:31.258 --------------------------------------------------------------------------
+. 2020-03-29 03:12:31.258 Session name: learner@10.0.2.15 (Ad-Hoc site)
+. 2020-03-29 03:12:31.258 Host name: 10.0.2.15 (Port: 22)
+. 2020-03-29 03:12:31.258 User name: learner (Password: No, Key file: No, Passphrase: No)
+. 2020-03-29 03:12:31.258 Tunnel: No
+. 2020-03-29 03:12:31.258 Transfer Protocol: SFTP (SCP)
+. 2020-03-29 03:12:31.258 Ping type: Off, Ping interval: 30 sec; Timeout: 15 sec
+. 2020-03-29 03:12:31.258 Disable Nagle: No
+. 2020-03-29 03:12:31.258 Proxy: None
+. 2020-03-29 03:12:31.258 Send buffer: 262144
+. 2020-03-29 03:12:31.258 SSH protocol version: 2; Compression: No
+. 2020-03-29 03:12:31.258 Bypass authentication: No
+. 2020-03-29 03:12:31.258 Try agent: Yes; Agent forwarding: No; TIS/CryptoCard: No; KI: Yes; GSSAPI: No
+. 2020-03-29 03:12:31.259 Ciphers: aes,chacha20,blowfish,3des,WARN,arcfour,des; Ssh2DES: No
+. 2020-03-29 03:12:31.259 KEX: ecdh,dh-gex-sha1,dh-group14-sha1,rsa,WARN,dh-group1-sha1
+. 2020-03-29 03:12:31.259 SSH Bugs: Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto
+. 2020-03-29 03:12:31.259 Simple channel: Yes
+. 2020-03-29 03:12:31.259 Return code variable: Autodetect; Lookup user groups: Auto
+. 2020-03-29 03:12:31.259 Shell: default
+. 2020-03-29 03:12:31.259 EOL: LF, UTF: Auto
+. 2020-03-29 03:12:31.259 Clear aliases: Yes, Unset nat.vars: Yes, Resolve symlinks: Yes; Follow directory symlinks: No
+. 2020-03-29 03:12:31.259 LS: ls -la, Ign LS warn: Yes, Scp1 Comp: No
+. 2020-03-29 03:12:31.259 SFTP Bugs: Auto,Auto
+. 2020-03-29 03:12:31.259 SFTP Server: default
+. 2020-03-29 03:12:31.259 Local directory: default, Remote directory: home, Update: Yes, Cache: Yes
+. 2020-03-29 03:12:31.259 Cache directory changes: Yes, Permanent: Yes
+. 2020-03-29 03:12:31.259 Recycle bin: Delete to: No, Overwritten to: No, Bin path: 
+. 2020-03-29 03:12:31.259 DST mode: Unix
+. 2020-03-29 03:12:31.259 --------------------------------------------------------------------------
+. 2020-03-29 03:12:31.355 Looking up host "10.0.2.15" for SSH connection
+. 2020-03-29 03:12:31.355 Connecting to 10.0.2.15 port 22
+. 2020-03-29 03:12:52.359 Failed to connect to 10.0.2.15: Network error: Connection timed out
+. 2020-03-29 03:12:52.359 Knocking FTP port.
+. 2020-03-29 03:12:54.360 FTP port did not open.
+* 2020-03-29 03:12:54.382 (EFatal) Network error: Connection to "10.0.2.15" timed out.
+. 2020-03-29 03:13:07.449 --------------------------------------------------------------------------
+. 2020-03-29 03:13:07.450 WinSCP Version 5.9.3 (Build 7136) (OS 10.0.18362 - Windows 10 Home)
+. 2020-03-29 03:13:07.451 Configuration: C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini
+. 2020-03-29 03:13:07.451 Log level: Normal
+. 2020-03-29 03:13:07.451 Local account: DOWNMASTER\Talgams
+. 2020-03-29 03:13:07.451 Working directory: C:\Heights\PortableApps\WinSCPPortable\App\WinSCP
+. 2020-03-29 03:13:07.451 Process ID: 20096
+. 2020-03-29 03:13:07.452 Command-line: "C:\Heights\PortableApps\WinSCPPortable\App\WinSCP\WinSCP.exe" /ini="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.ini" /log="C:\Heights\PortableApps\WinSCPPortable\Data\settings\winscp.log"
+. 2020-03-29 03:13:07.452 Time zone: Current: GMT+3, Standard: GMT+2 (Jerusalem Standard Time), DST: GMT+3 (Jerusalem Daylight Time), DST Start: 3/27/2020, DST End: 10/25/2020
+. 2020-03-29 03:13:07.453 Login time: Sunday, March 29, 2020 3:13:07 AM
+. 2020-03-29 03:13:07.453 --------------------------------------------------------------------------
+. 2020-03-29 03:13:07.453 Session name: learner@192.168.56.1 (Ad-Hoc site)
+. 2020-03-29 03:13:07.453 Host name: 192.168.56.1 (Port: 22)
+. 2020-03-29 03:13:07.453 User name: learner (Password: Yes, Key file: No, Passphrase: No)
+. 2020-03-29 03:13:07.453 Tunnel: No
+. 2020-03-29 03:13:07.453 Transfer Protocol: SFTP (SCP)
+. 2020-03-29 03:13:07.453 Ping type: Off, Ping interval: 30 sec; Timeout: 15 sec
+. 2020-03-29 03:13:07.453 Disable Nagle: No
+. 2020-03-29 03:13:07.453 Proxy: None
+. 2020-03-29 03:13:07.453 Send buffer: 262144
+. 2020-03-29 03:13:07.453 SSH protocol version: 2; Compression: No
+. 2020-03-29 03:13:07.453 Bypass authentication: No
+. 2020-03-29 03:13:07.453 Try agent: Yes; Agent forwarding: No; TIS/CryptoCard: No; KI: Yes; GSSAPI: No
+. 2020-03-29 03:13:07.453 Ciphers: aes,chacha20,blowfish,3des,WARN,arcfour,des; Ssh2DES: No
+. 2020-03-29 03:13:07.453 KEX: ecdh,dh-gex-sha1,dh-group14-sha1,rsa,WARN,dh-group1-sha1
+. 2020-03-29 03:13:07.454 SSH Bugs: Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto
+. 2020-03-29 03:13:07.454 Simple channel: Yes
+. 2020-03-29 03:13:07.454 Return code variable: Autodetect; Lookup user groups: Auto
+. 2020-03-29 03:13:07.454 Shell: default
+. 2020-03-29 03:13:07.454 EOL: LF, UTF: Auto
+. 2020-03-29 03:13:07.454 Clear aliases: Yes, Unset nat.vars: Yes, Resolve symlinks: Yes; Follow directory symlinks: No
+. 2020-03-29 03:13:07.454 LS: ls -la, Ign LS warn: Yes, Scp1 Comp: No
+. 2020-03-29 03:13:07.454 SFTP Bugs: Auto,Auto
+. 2020-03-29 03:13:07.454 SFTP Server: default
+. 2020-03-29 03:13:07.454 Local directory: default, Remote directory: home, Update: Yes, Cache: Yes
+. 2020-03-29 03:13:07.454 Cache directory changes: Yes, Permanent: Yes
+. 2020-03-29 03:13:07.454 Recycle bin: Delete to: No, Overwritten to: No, Bin path: 
+. 2020-03-29 03:13:07.454 DST mode: Unix
+. 2020-03-29 03:13:07.454 --------------------------------------------------------------------------
+. 2020-03-29 03:13:07.562 Looking up host "192.168.56.1" for SSH connection
+. 2020-03-29 03:13:07.563 Connecting to 192.168.56.1 port 22
+. 2020-03-29 03:13:09.566 Failed to connect to 192.168.56.1: Network error: Connection refused
+. 2020-03-29 03:13:09.566 Knocking FTP port.
+. 2020-03-29 03:13:11.567 FTP port did not open.
+* 2020-03-29 03:13:11.614 (EFatal) Network error: Connection to "192.168.56.1" refused.
