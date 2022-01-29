@@ -46,19 +46,17 @@ def download_file(url):
     with requests.get(url, stream=True) as r:
         r.raise_for_status()
         with open(DOWNLOADS_DIR + local_filename, 'wb') as f:
-            for chunk in r.iter_content(chunk_size=8192): 
+            for chunk in r.iter_content(chunk_size=8192):
                 # If you have chunk encoded response uncomment if
                 # and set chunk_size parameter to None.
-                #if chunk: 
-                    f.write(chunk)
+                # if chunk:
+                f.write(chunk)
     return local_filename
 
 
 @app.route('/stage1')
 def download_miniconda() -> Tuple[str, int, Dict[str, str]]:
     return download_file(ANACONDA_URL)
-
-
 
 
 @app.after_request
@@ -82,10 +80,12 @@ if __name__ == '__main__':
     t.start()
 
     # window = webview.create_window("Heights Install System", "http://127.0.0.1:54321/?q=" + get_random_alphanumeric_string(8), frameless=True)
-    window = webview.create_window("Heights Install System", url="http://127.0.0.1:54321/?q=" + get_random_alphanumeric_string(8), html='', js_api=None, width=800, height=400, \
-                      x=None, y=None, resizable=False, fullscreen=False, \
-                      min_size=(200, 100), hidden=False, frameless=False, \
-                      minimized=False, on_top=False, confirm_close=False, \
-                      background_color='#FFF', text_select=False)
+    window = webview.create_window("Heights Install System",
+                                   url="http://127.0.0.1:54321/?q=" + get_random_alphanumeric_string(8), html='',
+                                   js_api=None, width=800, height=400,
+                                   x=None, y=None, resizable=False, fullscreen=False,
+                                   min_size=(200, 100), hidden=False, frameless=False,
+                                   minimized=False, on_top=False, confirm_close=False,
+                                   background_color='#FFF', text_select=False)
     webview.start(debug=True)
     sys.exit()
