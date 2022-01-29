@@ -41,7 +41,7 @@ def start_server():
 
 @app.route('/stage1')
 def download_miniconda() -> Tuple[str, int, Dict[str, str]]:
-    return download_file_with_response(ANACONDA_URL)
+    return download_file_with_response(MINICONDA_URL)
 
 
 @app.after_request

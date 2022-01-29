@@ -1,3 +1,3 @@
-from Constants import ANACONDA_URL
+from Constants import MINICONDA_URL
 
 
