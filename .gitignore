@@ -1,1 +1,6 @@
+!*/.gitkeep
+
 /.idea
+/downloads/
+/system/installations/
+__pycache__/
