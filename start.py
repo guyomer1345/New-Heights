@@ -15,6 +15,7 @@ from Utils import download_file_with_response
 
 
 def init():
+    # TODO: cleanup the directory if exists
     if not os.path.isdir(DOWNLOADS_DIR):
         os.makedirs(DOWNLOADS_DIR)
 
@@ -39,7 +40,7 @@ def start_server():
     app.run(host='127.0.0.1', port=54321)
 
 
-#@app.route('/stage1')
+# @app.route('/stage1')
 # TODO: download and install and register miniconda, 7zip
 
 

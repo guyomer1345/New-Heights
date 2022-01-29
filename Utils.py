@@ -1,10 +1,19 @@
-from Constants import *
+from Constants import DOWNLOADS_DIR, FILE_EXISTS, JSON_CONTENT_TYPE
 import json
 import time
 import requests
+import os
+from typing import Tuple, Dict
 
 
 def download_file(url):
+    """
+    Sends a GET request to the url, saving the (supposedly) executable file
+    response in the download directory.
+
+    :param url: where to send the GET request to
+    :return: the filename, relative to the download directory
+    """
     local_filename = url.split('/')[-1]
     # NOTE the stream=True parameter below
     with requests.get(url, stream=True) as r:
@@ -20,6 +29,13 @@ def download_file(url):
 
 # TODO: implement dataclass of response
 def download_file_with_response(url: str) -> Tuple[str, int, Dict[str, str]]:
+    """
+    Attempts to download the file located at the url if it doesn't already
+    exist, returning JSON GET response, can be implemented for start.py
+
+    :param url: where to download the file from
+    :return: a JSON GET response
+    """
     # TODO: add error handling of url?
     name = url.split('/')[-1]
 
