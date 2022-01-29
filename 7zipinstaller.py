@@ -9,7 +9,7 @@ def download_7zip() -> Tuple[str, int, Dict[str, str]]:
     return download_file_with_response(SEVEN_ZIP_URL)
 
 
-def install_7zip_from_executable(executable_path: str):
+def install_7zip_from_executable(executable_path: str) -> bool:
     os.system(SEVEN_ZIP_INSTALL_COMMAND % executable_path)
 
     return os.path.isdir(SEVEN_ZIP_INSTALLATION_FOLDER)
@@ -36,7 +36,11 @@ def install_7zip():
 #  add call to install_7zip
 
 # FIXME: silent extraction of files
-#   os.environ['PATH'] += ';%s' % SEVEN_ZIP_INSTALLATION_FOLDER
-#   print('\n'.join(os.environ['PATH'].split(';')))
-#   os.popen('7z x -y TelegramDesktopPortable_3.4.8.paf.exe -o%s' % os.path.join(INSTALLATIONS_DIR, 'TelegramPortable'))
+
+
+# install_7zip()
+# os.environ['PATH'] += ';%s' % SEVEN_ZIP_INSTALLATION_FOLDER
+# print('\n'.join(os.environ['PATH'].split(';')))
+# os.system('7z x -y TelegramDesktopPortable_3.4.8.paf.exe -o%s' % os.path.join(INSTALLATIONS_DIR, 'TelegramPortable'))
+# os.popen()
 

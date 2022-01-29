@@ -18,12 +18,15 @@ def download_file(url):
     return local_filename
 
 
+# TODO: implement dataclass of response
 def download_file_with_response(url: str) -> Tuple[str, int, Dict[str, str]]:
     # TODO: add error handling of url?
     name = url.split('/')[-1]
 
     if os.path.exists(DOWNLOADS_DIR + name):
         file_time = os.path.getctime(DOWNLOADS_DIR + name)
+
+        # TODO: change to proper version checking
         if not ((time.time() - file_time) / 3600 > 24*30):
             return json.dumps({'success':True, 'msg':str(name) + FILE_EXISTS}), 200, JSON_CONTENT_TYPE
 
