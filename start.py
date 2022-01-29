@@ -1,3 +1,5 @@
+from typing import Tuple, Dict
+
 from flask import Flask, request
 import webview
 import threading
@@ -10,8 +12,7 @@ import requests
 import json
 import time
 
-WORK_DIR = os.path.dirname(os.path.realpath(__file__))
-DOWNLOADS_DIR = os.path.join(WORK_DIR, "downloads") + os.path.sep
+from Constants import *
 
 
 def init():
@@ -54,26 +55,10 @@ def download_file(url):
 
 
 @app.route('/stage1')
-def download_miniconda():
+def download_miniconda() -> Tuple[str, int, Dict[str, str]]:
+    return download_file(ANACONDA_URL)
 
-    url = "https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe"
-    name = url.split('/')[-1]
 
-    if os.path.exists(DOWNLOADS_DIR + name):
-        file_time = os.path.getctime(DOWNLOADS_DIR + name)
-        if not ((time.time() - file_time) / 3600 > 24*30):
-            return json.dumps({'success':True, 'msg':str(name) + "Already Exists"}), 200, {'ContentType':'application/json'} 
-
-    try:
-        filename = download_file(url)
-    except requests.exceptions.HTTPError as e:
-        return json.dumps({'error':False, 'msg':str(e), 'httpcode':e.response.status_code}), 500, {'ContentType':'application/json'} 
-
-    
-    if filename:
-        return json.dumps({'success':True, 'msg':str(filename)}), 200, {'ContentType':'application/json'} 
-
-    return json.dumps({'error':False, 'msg':str(filename)}), 500, {'ContentType':'application/json'} 
 
 
 @app.after_request
