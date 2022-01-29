@@ -39,9 +39,8 @@ def start_server():
     app.run(host='127.0.0.1', port=54321)
 
 
-@app.route('/stage1')
-def download_miniconda() -> Tuple[str, int, Dict[str, str]]:
-    return download_file_with_response(MINICONDA_URL)
+#@app.route('/stage1')
+# TODO: download and install and register miniconda, 7zip
 
 
 @app.after_request

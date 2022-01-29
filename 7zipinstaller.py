@@ -6,7 +6,7 @@ from Utils import download_file_with_response
 
 
 def download_7zip() -> Tuple[str, int, Dict[str, str]]:
-    return download_file_with_response(SEVEN_ZIP_URL)
+    return download_file_with_response(SEVEN_ZIP_URL) 
 
 
 def install_7zip_from_executable(executable_path: str) -> bool:
