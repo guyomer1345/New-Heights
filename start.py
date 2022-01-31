@@ -1,3 +1,4 @@
+from CustomInstallers import install_7zip
 from flask import Flask  # , request
 import webview
 import threading
@@ -40,7 +41,9 @@ def start_server():
     app.run(host='127.0.0.1', port=54321)
 
 
-# @app.route('/stage1')
+@app.route('/stage1')
+def test():
+    install_7zip()
 # TODO: download and install and register miniconda, 7zip
 
 
