@@ -8,10 +8,10 @@ from GeneralInstaller import install_program
 
 
 def install_miniconda():
-    install_program(MINICONDA_NAME, MINICONDA_INSTALLATION_FOLDER,
-                    MINICONDA_URL, MINICONDA_INSTALL_COMMAND)
+    return install_program(MINICONDA_NAME, MINICONDA_INSTALLATION_FOLDER,
+                           MINICONDA_URL, MINICONDA_INSTALL_COMMAND)
 
 
 def install_7zip():
-    install_program(SEVEN_ZIP_NAME, SEVEN_ZIP_INSTALLATION_FOLDER,
-                    SEVEN_ZIP_URL, SEVEN_ZIP_INSTALL_COMMAND)
+    return install_program(SEVEN_ZIP_NAME, SEVEN_ZIP_INSTALLATION_FOLDER,
+                           SEVEN_ZIP_URL, SEVEN_ZIP_INSTALL_COMMAND)
