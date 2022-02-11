@@ -72,8 +72,6 @@ if __name__ == '__main__':
     t.start()
 
     if start_window:
-
-        # window = webview.create_window("Heights Install System", "http://127.0.0.1:54321/?q=" + get_random_alphanumeric_string(8), frameless=True)
         window = webview.create_window("Heights Install System",
                                        url="http://127.0.0.1:54321/?q=" +
                                            get_random_alphanumeric_string(
