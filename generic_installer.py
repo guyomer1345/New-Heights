@@ -2,8 +2,8 @@ import json
 import os.path
 from typing import Callable, Tuple, Dict
 
-from Constants import FILE_EXISTS, DOWNLOADS_DIR, JSON_CONTENT_TYPE
-from Utils import download_file_with_response
+from constants import FILE_EXISTS, DOWNLOADS_DIR, JSON_CONTENT_TYPE
+from utils import download_file_with_response
 
 
 def download_program(url: str) -> Tuple[str, int, Dict[str, str]]:

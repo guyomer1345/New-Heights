@@ -1,4 +1,4 @@
-from CustomInstallers import install_7zip
+from custom_installers import install_7zip
 from flask import Flask  # , request
 import webview
 import threading
@@ -11,8 +11,8 @@ import requests
 # import json
 # import time
 
-from Constants import *
-from Utils import download_file_with_response
+from constants import *
+from utils import download_file_with_response
 
 
 def init():

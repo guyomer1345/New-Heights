@@ -1,5 +1,5 @@
 import os
-from CustomInstallers import install_miniconda
+from custom_installers import install_miniconda
 
 install_miniconda()
 

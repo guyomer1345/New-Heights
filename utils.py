@@ -1,4 +1,4 @@
-from Constants import DOWNLOADS_DIR, FILE_EXISTS, JSON_CONTENT_TYPE
+from constants import DOWNLOADS_DIR, FILE_EXISTS, JSON_CONTENT_TYPE
 import json
 import time
 import requests
