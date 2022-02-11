@@ -2,7 +2,7 @@ import json
 import os.path
 from typing import Callable, Tuple, Dict
 
-from Constants import FILE_EXISTS, DOWNLOADS_DIR
+from Constants import FILE_EXISTS, DOWNLOADS_DIR, JSON_CONTENT_TYPE
 from Utils import download_file_with_response
 
 
@@ -34,7 +34,9 @@ def install_program(program_name: str, installation_folder: str,
     # TODO: implement version checking
     if os.path.isdir(installation_folder):
         # TODO: change according to end handling
-        return program_name + ' Already Installed'
+        return json.dumps({'success': True,
+                           'msg': program_name + ' Already Installed'}), 200,\
+               JSON_CONTENT_TYPE
 
     response = download_program(download_url)
 
@@ -49,6 +51,8 @@ def install_program(program_name: str, installation_folder: str,
 
         install_program_from_executable(install_command, installation_folder,
                                         os.path.join(DOWNLOADS_DIR, file_path))
+
+    return response
 
         # TODO: add handling of success and failure
 
