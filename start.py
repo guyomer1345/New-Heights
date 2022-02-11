@@ -69,11 +69,8 @@ if __name__ == '__main__':
 
     # window = webview.create_window("Heights Install System", "http://127.0.0.1:54321/?q=" + get_random_alphanumeric_string(8), frameless=True)
     window = webview.create_window("Heights Install System",
-                                   url="http://127.0.0.1:54321/?q=" + get_random_alphanumeric_string(8), html='',
-                                   js_api=None, width=800, height=400,
-                                   x=None, y=None, resizable=False, fullscreen=False,
-                                   min_size=(200, 100), hidden=False, frameless=False,
-                                   minimized=False, on_top=False, confirm_close=False,
-                                   background_color='#FFF', text_select=False)
+                                   url="http://127.0.0.1:54321/?q=" +
+                                       get_random_alphanumeric_string(
+                                       8), height=400, resizable=False, min_size=(200, 100))
     webview.start(debug=True)
     sys.exit()
