@@ -63,7 +63,7 @@
                 console.log(data)
             })
             .fail (function(jqXHR, textStatus, errorThrown) {
-                alert("Error");
+                alert("Error: " + jqXHR.responseText);
             })
             .always (function(jqXHROrData, textStatus, jqXHROrErrorThrown) {
                 alert("complete");
