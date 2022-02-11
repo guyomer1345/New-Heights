@@ -25,3 +25,6 @@ SUCCESS = 'success'
 MSG = 'msg'
 HTTP_CODE = 'http_code'
 FILE_EXISTS = ' Already Exists'
+INSTALL_SUCCESS = 'Installed %s successfully'
+
+ACCESS_DENIED = 'Access is denied.'
