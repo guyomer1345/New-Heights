@@ -49,6 +49,24 @@
     <script type="text/javascript" src="js/jquery.min.js"></script>
 
     <script type="text/javascript">
+        const FORWARD = 1;
+        const BACKWARD = -1;
+
+        function get_status_bar() {
+            return document.getElementsByClassName('determinate').item(0);
+        }
+
+        function get_status_bar_width() {
+            return get_status_bar().style.width;
+        }
+
+        function change_status_bar(direction, amount) {
+            let width = get_status_bar_width();
+            let widthInt = parseInt(width.substring(0,2));
+
+            get_status_bar().style.width = widthInt + direction * amount + "%";
+        }
+
         $("#starter").click(function() {
             $.ajax({
                 url: "/stage1",
@@ -59,6 +77,7 @@
                 }
             })
             .done (function(data, textStatus, jqXHR) {
+                change_status_bar(FORWARD, 10);
                 alert("Success: " + data.msg);
                 console.log(data)
             })
