@@ -1,9 +1,10 @@
 import json
 import os.path
+import subprocess
 from typing import Callable, Tuple, Dict
 
 from constants import FILE_EXISTS, DOWNLOADS_DIR, JSON_CONTENT_TYPE, SUCCESS, \
-    MSG
+    MSG, INSTALL_SUCCESS
 from utils import download_file_with_response
 
 
@@ -36,7 +37,7 @@ def install_program(program_name: str, installation_folder: str,
     if os.path.isdir(installation_folder):
         # TODO: change according to end handling
         return json.dumps({SUCCESS: True,
-                           MSG: program_name + FILE_EXISTS}), 200,\
+                           MSG: program_name + FILE_EXISTS}), 200, \
                JSON_CONTENT_TYPE
 
     response = download_program(download_url)
@@ -47,19 +48,29 @@ def install_program(program_name: str, installation_folder: str,
         file_path = json_object[MSG]
 
         if FILE_EXISTS in file_path:
+            # change to logging.debug/send to another endpoint?
             print('File already exists, using local')  # assuming version check
             file_path = file_path.replace(FILE_EXISTS, '')
 
-        install_program_from_executable(install_command, installation_folder,
-                                        os.path.join(DOWNLOADS_DIR, file_path))
+        created_dir, error_msg = install_program_from_executable(
+            install_command,
+            installation_folder,
+            os.path.join(
+                DOWNLOADS_DIR,
+                file_path))
+
+        return json.dumps({SUCCESS: created_dir,
+                           MSG: INSTALL_SUCCESS % program_name if created_dir
+                           else error_msg}), 200 if created_dir else 500, \
+               JSON_CONTENT_TYPE
 
     return response
 
-        # TODO: add handling of success and failure
+    # TODO: add handling of success and failure
 
 
 def install_program_from_executable(install_command: str, install_dir: str,
-                                    executable_path: str) -> bool:
+                                    executable_path: str) -> Tuple[bool, str]:
     """
     Runs the installation command and returns whether the folder was created
     or not.
@@ -70,6 +81,15 @@ def install_program_from_executable(install_command: str, install_dir: str,
     :return: whether the folder was created or not.
     """
     # TODO: add error handling
-    os.system(install_command % executable_path)
+    proc = subprocess.Popen(install_command % executable_path,
+                            stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                            shell=True)
 
-    return os.path.isdir(install_dir)
+    out, err = proc.communicate()
+
+    print(out, err)
+
+    if err:
+        return False, err.decode().strip()
+
+    return os.path.isdir(install_dir), out.decode()
