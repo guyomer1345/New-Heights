@@ -66,12 +66,12 @@ if __name__ == '__main__':
 
     t = threading.Thread(target=start_server)
 
-    start_window = False
-    t.daemon = start_window
+    debug_mode = '-d' in sys.argv
+    t.daemon = not debug_mode
 
     t.start()
 
-    if start_window:
+    if not debug_mode:
         window = webview.create_window("Heights Install System",
                                        url="http://127.0.0.1:54321/?q=" +
                                            get_random_alphanumeric_string(
