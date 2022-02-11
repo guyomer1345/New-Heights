@@ -65,13 +65,19 @@ if __name__ == '__main__':
     init()
 
     t = threading.Thread(target=start_server)
-    t.daemon = True
+
+    start_window = False
+    t.daemon = start_window
+
     t.start()
 
-    # window = webview.create_window("Heights Install System", "http://127.0.0.1:54321/?q=" + get_random_alphanumeric_string(8), frameless=True)
-    window = webview.create_window("Heights Install System",
-                                   url="http://127.0.0.1:54321/?q=" +
-                                       get_random_alphanumeric_string(
-                                       8), height=400, resizable=False, min_size=(200, 100))
-    webview.start(debug=True)
-    sys.exit()
+    if start_window:
+
+        # window = webview.create_window("Heights Install System", "http://127.0.0.1:54321/?q=" + get_random_alphanumeric_string(8), frameless=True)
+        window = webview.create_window("Heights Install System",
+                                       url="http://127.0.0.1:54321/?q=" +
+                                           get_random_alphanumeric_string(
+                                           8), height=400, resizable=False,
+                                       min_size=(200, 100))
+        # webview.start(debug=True)
+        sys.exit()
