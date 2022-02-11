@@ -2,7 +2,8 @@ import json
 import os.path
 from typing import Callable, Tuple, Dict
 
-from constants import FILE_EXISTS, DOWNLOADS_DIR, JSON_CONTENT_TYPE
+from constants import FILE_EXISTS, DOWNLOADS_DIR, JSON_CONTENT_TYPE, SUCCESS, \
+    MSG
 from utils import download_file_with_response
 
 
@@ -34,8 +35,8 @@ def install_program(program_name: str, installation_folder: str,
     # TODO: implement version checking
     if os.path.isdir(installation_folder):
         # TODO: change according to end handling
-        return json.dumps({'success': True,
-                           'msg': program_name + ' Already Installed'}), 200,\
+        return json.dumps({SUCCESS: True,
+                           MSG: program_name + FILE_EXISTS}), 200,\
                JSON_CONTENT_TYPE
 
     response = download_program(download_url)
@@ -43,7 +44,7 @@ def install_program(program_name: str, installation_folder: str,
     # TODO: make less 'magic number-y', make response object and stuff
     if response[1] == 200:
         json_object = json.loads(response[0])
-        file_path = json_object['msg']
+        file_path = json_object[MSG]
 
         if FILE_EXISTS in file_path:
             print('File already exists, using local')  # assuming version check

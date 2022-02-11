@@ -21,4 +21,7 @@ MINICONDA_INSTALL_COMMAND = 'start /wait "" %s /AddToPath=1 \
     .format(installation_folder=MINICONDA_INSTALLATION_FOLDER)
 
 JSON_CONTENT_TYPE = {'ContentType': 'application/json'}
+SUCCESS = 'success'
+MSG = 'msg'
+HTTP_CODE = 'http_code'
 FILE_EXISTS = ' Already Exists'
