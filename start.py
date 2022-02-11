@@ -43,7 +43,7 @@ def start_server():
 
 @app.route('/stage1')
 def test():
-    install_7zip()
+    return install_7zip()
 # TODO: download and install and register miniconda, 7zip
 
 
