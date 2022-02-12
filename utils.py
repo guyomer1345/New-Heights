@@ -9,7 +9,7 @@ from constants import DOWNLOADS_DIR, FILE_EXISTS, JSON_CONTENT_TYPE, SUCCESS, \
     MSG, HTTP_CODE
 
 
-def download_file(url):
+def download_file(url, local_filename=None):
     """
     Sends a GET request to the url, saving the (supposedly) executable file
     response in the download directory.
@@ -17,7 +17,8 @@ def download_file(url):
     :param url: where to send the GET request to
     :return: the filename, relative to the download directory
     """
-    local_filename = url.split('/')[-1]
+    if not local_filename:
+        local_filename = url.split('/')[-1]
     # NOTE the stream=True parameter below
     with requests.get(url, stream=True) as r:
         r.raise_for_status()
