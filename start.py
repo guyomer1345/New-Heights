@@ -12,7 +12,7 @@ import requests
 # import json
 # import time
 
-from custom_installers import install_7zip
+import installers
 from constants import *
 from generic_downloader import download_file_with_response
 
@@ -49,7 +49,7 @@ def test():
     
     # print(request.args.get('name', ''))
     app_name = request.args.get('name', '')
-    if app_name not in APP_NAMES:
+    if not any([app for app in AppUrls if app_name in app.value.app_name]):
         return json.dumps({SUCCESS: False, MSG: 'Not Found'}), 404, \
                JSON_CONTENT_TYPE
 

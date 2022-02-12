@@ -1,0 +1,1 @@
+from custom_installers import install_miniconda, install_7zip

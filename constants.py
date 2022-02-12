@@ -1,4 +1,5 @@
 import os
+from enum import Enum, EnumMeta
 
 WORK_DIR = os.path.dirname(os.path.realpath(__file__))
 DOWNLOADS_DIR = os.path.join(WORK_DIR, "downloads") + os.path.sep
@@ -30,4 +31,11 @@ INSTALL_SUCCESS = 'Installed %s successfully'
 ACCESS_DENIED = 'Access is denied.'
 
 
-APP_NAMES = [SEVEN_ZIP_NAME, MINICONDA_NAME]
+class AppUrls(Enum):
+    class Miniconda(EnumMeta):
+        app_name = 'Miniconda'
+        app_url = MINICONDA_URL
+
+    class SevenZip(EnumMeta):
+        app_name = '7-Zip'
+        app_url = SEVEN_ZIP_URL
