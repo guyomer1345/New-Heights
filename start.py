@@ -85,7 +85,8 @@ if __name__ == '__main__':
         window = webview.create_window("Heights Install System",
                                        url="http://127.0.0.1:54321/?q=" +
                                            get_random_alphanumeric_string(
-                                           8), height=400, resizable=False,
-                                       min_size=(200, 100))
-        # webview.start(debug=True)
+                                               8), height=400,
+                                       resizable=False, min_size=(200, 100),
+                                       background_color='#FFF')
+        webview.start(debug=True)
         sys.exit()
