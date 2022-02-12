@@ -1,6 +1,5 @@
 import json
 
-from custom_installers import install_7zip
 from flask import Flask, request
 import webview
 import threading
@@ -13,8 +12,9 @@ import requests
 # import json
 # import time
 
+from custom_installers import install_7zip
 from constants import *
-from utils import download_file_with_response
+from generic_downloader import download_file_with_response
 
 
 def init():
@@ -46,6 +46,7 @@ def start_server():
 
 @app.route('/download')
 def test():
+    
     # print(request.args.get('name', ''))
     app_name = request.args.get('name', '')
     if app_name not in APP_NAMES:
@@ -53,7 +54,7 @@ def test():
                JSON_CONTENT_TYPE
 
     # TODO: change to getting specific app download
-    return install_7zip()
+    
 # TODO: download and install and register miniconda, 7zip
 
 

@@ -65,3 +65,13 @@ def download_file_with_response(url: str) -> Tuple[str, int, Dict[str, str]]:
 
     return json.dumps({SUCCESS: False, MSG: str(filename)}), 500,  \
            JSON_CONTENT_TYPE
+
+
+def download_program(url: str) -> Tuple[str, int, Dict[str, str]]:
+    """
+    Attempts to download the program from the given url
+
+    :param url: the program's installer's url
+    :return: a response object according to the results of the download
+    """
+    return download_file_with_response(url)
