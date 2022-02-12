@@ -4,3 +4,5 @@
 /downloads/
 /system/installations/
 __pycache__/
+/dist
+/build
