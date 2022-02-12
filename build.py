@@ -10,7 +10,7 @@ def main():
         # '--name=%s' % "Heights_Installation",
         '--onefile',
         '--windowed',
-        # '--uac-admin',
+        '--uac-admin',
         '--add-data=%s' % "static;static",
         '--icon=%s' % 'Heights.ico',
         'start.py'
