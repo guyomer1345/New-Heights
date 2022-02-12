@@ -47,49 +47,7 @@
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/jquery.min.js"></script>
-
-    <script type="text/javascript">
-        const FORWARD = 1;
-        const BACKWARD = -1;
-
-        function get_status_bar() {
-            return document.getElementsByClassName('determinate').item(0);
-        }
-
-        function get_status_bar_width() {
-            return get_status_bar().style.width;
-        }
-
-        function change_status_bar(direction, amount) {
-            let width = get_status_bar_width();
-            let widthInt = parseInt(width.substring(0,2));
-
-            get_status_bar().style.width = widthInt + direction * amount + "%";
-        }
-
-        $("#starter").click(function() {
-            $.ajax({
-                url: "/stage1",
-                type: "get", //Use "PUT" for HTTP PUT methods
-                dataType: 'json',
-                data: {
-                    key : "value",
-                }
-            })
-            .done (function(data, textStatus, jqXHR) {
-                change_status_bar(FORWARD, 10);
-                alert("Success: " + data.msg);
-                console.log(data)
-            })
-            .fail (function(jqXHR, textStatus, errorThrown) {
-                alert("Error: " + jqXHR.responseText);
-            })
-            .always (function(jqXHROrData, textStatus, jqXHROrErrorThrown) {
-                alert("complete");
-            });
-        });
-
-    </script>
+    <script type="text/javascript" src="js/main.js"></script>
 </body>
 
 </html>
