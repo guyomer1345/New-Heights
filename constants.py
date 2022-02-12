@@ -28,3 +28,6 @@ FILE_EXISTS = ' Already Exists'
 INSTALL_SUCCESS = 'Installed %s successfully'
 
 ACCESS_DENIED = 'Access is denied.'
+
+
+APP_NAMES = [SEVEN_ZIP_NAME, MINICONDA_NAME]
