@@ -1,5 +1,7 @@
+import json
+
 from custom_installers import install_7zip
-from flask import Flask  # , request
+from flask import Flask, request
 import webview
 import threading
 # import pkg_resources.py2_warn
@@ -42,8 +44,15 @@ def start_server():
     app.run(host='127.0.0.1', port=54321)
 
 
-@app.route('/stage1')
+@app.route('/download')
 def test():
+    # print(request.args.get('name', ''))
+    app_name = request.args.get('name', '')
+    if app_name not in APP_NAMES:
+        return json.dumps({SUCCESS: False, MSG: 'Not Found'}), 404, \
+               JSON_CONTENT_TYPE
+
+    # TODO: change to getting specific app download
     return install_7zip()
 # TODO: download and install and register miniconda, 7zip
 
