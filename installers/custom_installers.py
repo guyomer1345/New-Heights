@@ -1,10 +1,9 @@
 from constants import MINICONDA_INSTALL_COMMAND, \
     MINICONDA_INSTALLATION_FOLDER, MINICONDA_URL, MINICONDA_NAME, \
-    \
     SEVEN_ZIP_INSTALL_COMMAND, SEVEN_ZIP_INSTALLATION_FOLDER, SEVEN_ZIP_URL,\
     SEVEN_ZIP_NAME
 
-from generic_installer import install_program
+from installers.generic_installer import install_program
 
 
 def install_miniconda():
