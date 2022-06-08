@@ -1,4 +1,3 @@
-from tempfile import TemporaryFile
 from flask import Flask, request
 import webview
 import threading
@@ -7,8 +6,8 @@ import random
 import string
 import logging
 from data_classes import Response
-from installers import AppUrls
 from constants import *
+import installers
 
 logging.basicConfig(level=logging.INFO)
 
@@ -41,21 +40,26 @@ def start_server():
 
 
 @app.route('/download')
-def test():
-    
+def download():
     app_name = request.args.get('name', '')
-    apps = [app for app in AppUrls if app_name in app.value.app_name]
+    installers.manager.install(app_name)
+    apps = [app for app in Apps if app_name in app.value.APP_NAME]
     if not any(apps):
         return Response(False, 'Not Found', 404, JSON_CONTENT_TYPE).build()
 
+    logging.info('Found App')
     for app in apps:
-        response = app.value.installer()
+        response = app.value.INSTALLER()
         logging.info(response)
 
     return response.build()
     # TODO: change to getting specific app download
     
 # TODO: download and install and register miniconda, 7zip
+@app.route('/install')
+def install():
+    app_name = request.args.get('name', '')
+    apps = [app for app in Apps if app_name in app.value.APP_NAME]
 
 
 @app.after_request

@@ -4,8 +4,7 @@ import json
 import os
 import requests
 from data_classes import Response
-from constants import DOWNLOADS_DIR, FILE_EXISTS, JSON_CONTENT_TYPE, SUCCESS, \
-    MSG, HTTP_CODE
+from constants import DOWNLOADS_DIR, FILE_EXISTS, JSON_CONTENT_TYPE
 
 
 def download_file(url, local_filename=None):

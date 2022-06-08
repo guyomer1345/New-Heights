@@ -3,7 +3,7 @@ import os.path
 import subprocess
 from typing import Callable, Tuple
 from data_classes import Response
-from generic_downloader import download_program
+from downloader.generic_downloader import download_program
 
 from constants import FILE_EXISTS, DOWNLOADS_DIR, JSON_CONTENT_TYPE, SUCCESS, \
     MSG, INSTALL_SUCCESS
@@ -26,8 +26,6 @@ def install_program(program_name: str, installation_folder: str,
     of the currently installed program(if found) and only install from
     download_url if it's a newer version.
     """
-    response = download_program(download_url) #TODO add handling to download resp (didn't work...)
-
     # TODO: implement version checking
     if os.path.isdir(installation_folder):
         # TODO: change according to end handling
@@ -49,6 +47,7 @@ def install_program(program_name: str, installation_folder: str,
     status_code = 200 if created_dir else 500
     return Response(created_dir, msg, status_code, JSON_CONTENT_TYPE)
     # TODO: add handling of success and failure
+
 
 def install_program_from_executable(install_command: str, install_dir: str,
                                     executable_path: str) -> Tuple[bool, str]:

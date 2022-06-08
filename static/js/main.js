@@ -45,9 +45,31 @@ const download = app_name => {
     });
 }
 
+const install = app_name => {
+    let install_url = ROUTES_NAMES.install_route;
+
+    $.ajax({
+        url: install_url,
+        type: "get", //Use "PUT" for HTTP PUT methods
+        dataType: 'json',
+        data: {
+            name : app_name,
+        }
+    })
+    .done (function(data, textStatus, jqXHR) {
+        change_status_bar(FORWARD, 10);
+        alert("Success: " + data.msg);
+        console.log(data)
+    })
+    .fail (function(jqXHR, textStatus, errorThrown) {
+        alert("Error: " + jqXHR.responseText);
+    });
+}
+
 
 $("#starter").click(() => {
-    download(APP_NAMES[0]);
+    download(APP_NAMES[1]);
+    install(APP_NAMES[1]);
 })
 // $("#starter").click(function() {
 //     $.ajax({
