@@ -2,6 +2,8 @@ import json
 import os.path
 import subprocess
 from typing import Callable, Tuple
+from data_classes import Response
+from generic_downloader import download_program
 
 from constants import FILE_EXISTS, DOWNLOADS_DIR, JSON_CONTENT_TYPE, SUCCESS, \
     MSG, INSTALL_SUCCESS
@@ -24,13 +26,12 @@ def install_program(program_name: str, installation_folder: str,
     of the currently installed program(if found) and only install from
     download_url if it's a newer version.
     """
+    response = download_program(download_url) #TODO add handling to download resp (didn't work...)
+
     # TODO: implement version checking
     if os.path.isdir(installation_folder):
         # TODO: change according to end handling
-        return json.dumps({SUCCESS: True,
-                           MSG: program_name + FILE_EXISTS}), 200, \
-               JSON_CONTENT_TYPE
-
+        return Response(True, program_name+FILE_EXISTS, 200, JSON_CONTENT_TYPE)
 
     if FILE_EXISTS in file_path:
         # change to logging.debug/send to another endpoint?
@@ -44,14 +45,10 @@ def install_program(program_name: str, installation_folder: str,
             DOWNLOADS_DIR,
             file_path))
 
-    return json.dumps({SUCCESS: created_dir,
-                        MSG: INSTALL_SUCCESS % program_name if created_dir
-                        else error_msg}), 200 if created_dir else 500, \
-            JSON_CONTENT_TYPE
-
-
+    msg =  INSTALL_SUCCESS % program_name if created_dir else error_msg
+    status_code = 200 if created_dir else 500
+    return Response(created_dir, msg, status_code, JSON_CONTENT_TYPE)
     # TODO: add handling of success and failure
-
 
 def install_program_from_executable(install_command: str, install_dir: str,
                                     executable_path: str) -> Tuple[bool, str]:
@@ -71,7 +68,7 @@ def install_program_from_executable(install_command: str, install_dir: str,
 
     out, err = proc.communicate()
 
-    print(out, err)
+    print(f'out is {out}, err is {err}')
 
     if err:
         return False, err.decode().strip()

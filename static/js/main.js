@@ -1,6 +1,6 @@
 const FORWARD = 1;
 const BACKWARD = -1;
-const APP_NAMES = ['7-Zip']
+const APP_NAMES = ['7-Zip', 'Miniconda']
 const ROUTES_NAMES = {
     download_route: 'download',
     install_route: 'install'

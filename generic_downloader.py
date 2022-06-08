@@ -1,10 +1,9 @@
+from typing import Tuple, Dict
+import time
 import json
 import os
-import time
-from typing import Tuple, Dict
-
 import requests
-
+from data_classes import Response
 from constants import DOWNLOADS_DIR, FILE_EXISTS, JSON_CONTENT_TYPE, SUCCESS, \
     MSG, HTTP_CODE
 
@@ -48,23 +47,17 @@ def download_file_with_response(url: str) -> Tuple[str, int, Dict[str, str]]:
 
         # TODO: change to proper version checking
         if not ((time.time() - file_time) / 3600 > 24 * 30):
-            return json.dumps({SUCCESS: True,
-                               MSG: str(name) + FILE_EXISTS}), 200, \
-                   JSON_CONTENT_TYPE
+            return Response(True, str(name)+ FILE_EXISTS, 200, JSON_CONTENT_TYPE)
 
     try:
         filename = download_file(url)
     except requests.exceptions.HTTPError as e:
-        return json.dumps({SUCCESS: False, MSG: str(e),
-                           HTTP_CODE: e.response.status_code}), 500, \
-               JSON_CONTENT_TYPE
+        return Response(True, str(e), 500 , JSON_CONTENT_TYPE)
 
     if filename:
-        return json.dumps({SUCCESS: True, MSG: str(filename)}), 200, \
-               JSON_CONTENT_TYPE
+        return Response(True, str(filename), 200 ,JSON_CONTENT_TYPE)
 
-    return json.dumps({SUCCESS: False, MSG: str(filename)}), 500,  \
-           JSON_CONTENT_TYPE
+    return Response(False, str(filename), 500, JSON_CONTENT_TYPE)
 
 
 def download_program(url: str) -> Tuple[str, int, Dict[str, str]]:

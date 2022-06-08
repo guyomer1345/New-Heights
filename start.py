@@ -1,13 +1,16 @@
-import json
+from tempfile import TemporaryFile
 from flask import Flask, request
 import webview
 import threading
 import sys
 import random
 import string
-import requests
-import installers
+import logging
+from data_classes import Response
+from installers import AppUrls
 from constants import *
+
+logging.basicConfig(level=logging.INFO)
 
 
 def init():
@@ -40,12 +43,16 @@ def start_server():
 @app.route('/download')
 def test():
     
-    # print(request.args.get('name', ''))
     app_name = request.args.get('name', '')
-    if not any([app for app in AppUrls if app_name in app.value.app_name]):
-        return json.dumps({SUCCESS: False, MSG: 'Not Found'}), 404, \
-               JSON_CONTENT_TYPE
+    apps = [app for app in AppUrls if app_name in app.value.app_name]
+    if not any(apps):
+        return Response(False, 'Not Found', 404, JSON_CONTENT_TYPE).build()
 
+    for app in apps:
+        response = app.value.installer()
+        logging.info(response)
+
+    return response.build()
     # TODO: change to getting specific app download
     
 # TODO: download and install and register miniconda, 7zip
@@ -61,6 +68,7 @@ def add_header(response):
     response.headers["Pragma"] = "no-cache"
     response.headers["Expires"] = "1"
     response.headers['Cache-Control'] = 'public, max-age=0'
+
     return response
 
 
