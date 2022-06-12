@@ -28,4 +28,8 @@ class Apps(Enum):
         APP_NAME = '7-Zip'
         URL = "https://d3.7-zip.org/a/7z2107-x64.exe"
         INSTALLATION_FOLDER = os.path.join(INSTALLATIONS_DIR, '7-Zip')
-        INSTALL_COMMAND = f'"%s" /S /D={INSTALLATION_FOLDER}' 
+        INSTALL_COMMAND = f'"%s" /S /D="{INSTALLATION_FOLDER}"' 
+
+class StatusCodes(Enum):
+    OK = 200
+    INTERNAL_SERVER_ERROR = 500

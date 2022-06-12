@@ -1,1 +1,0 @@
-from installer.generic_installer import install_program

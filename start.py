@@ -5,7 +5,7 @@ import sys
 import random
 import string
 import logging
-from data_classes import Response
+import installers
 from constants import *
 import installers
 
@@ -39,27 +39,10 @@ def start_server():
     app.run(host='127.0.0.1', port=54321)
 
 
-@app.route('/download')
+@app.route('/install')
 def download():
     app_name = request.args.get('name', '')
     installers.manager.install(app_name)
-    apps = [app for app in Apps if app_name in app.value.APP_NAME]
-    if not any(apps):
-        return Response(False, 'Not Found', 404, JSON_CONTENT_TYPE).build()
-
-    logging.info('Found App')
-    for app in apps:
-        response = app.value.INSTALLER()
-        logging.info(response)
-
-    return response.build()
-    # TODO: change to getting specific app download
-    
-# TODO: download and install and register miniconda, 7zip
-@app.route('/install')
-def install():
-    app_name = request.args.get('name', '')
-    apps = [app for app in Apps if app_name in app.value.APP_NAME]
 
 
 @app.after_request
@@ -76,7 +59,7 @@ def add_header(response):
     return response
 
 
-if __name__ == '__main__':
+if __name__ == '_1_main__':
     init()
 
     t = threading.Thread(target=start_server)

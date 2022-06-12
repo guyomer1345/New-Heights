@@ -1,13 +1,15 @@
 from installers.installer_manager import InstallerManager
-
+from installers.exe_installers import seven_zip_installer, miniconda_installer
+from constants import DOWNLOADS_DIR
 
 programs = [
     seven_zip_installer,
-    python_zip_installer
+    miniconda_installer
 ]
 
 manager = InstallerManager(
-    # Programs
+    programs,
+    DOWNLOADS_DIR
 )
 
 __all__ = [
