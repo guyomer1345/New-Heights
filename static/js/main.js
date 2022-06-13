@@ -19,7 +19,7 @@ function get_status_bar_width() {
 
 function change_status_bar(direction, amount) {
     let width = get_status_bar_width();
-    let widthInt = parseInt(width.substring(0,2));
+    let widthInt = parseInt(width.substring(0, 2));
 
     get_status_bar().style.width = widthInt + direction * amount + "%";
 }
@@ -32,17 +32,17 @@ const download = app_name => {
         type: "get", //Use "PUT" for HTTP PUT methods
         dataType: 'json',
         data: {
-            name : app_name,
+            name: app_name,
         }
     })
-    .done (function(data, textStatus, jqXHR) {
-        change_status_bar(FORWARD, 10);
-        alert("Success: " + data.msg);
-        console.log(data)
-    })
-    .fail (function(jqXHR, textStatus, errorThrown) {
-        alert("Error: " + jqXHR.responseText);
-    });
+        .done(function (data, textStatus, jqXHR) {
+            change_status_bar(FORWARD, 10);
+            alert("Success: " + data.msg);
+            console.log(data)
+        })
+        .fail(function (jqXHR, textStatus, errorThrown) {
+            alert("Error: " + jqXHR.responseText);
+        });
 }
 
 const install = app_name => {
@@ -53,24 +53,70 @@ const install = app_name => {
         type: "get", //Use "PUT" for HTTP PUT methods
         dataType: 'json',
         data: {
-            name : app_name,
+            name: app_name,
         }
     })
-    .done (function(data, textStatus, jqXHR) {
-        change_status_bar(FORWARD, 10);
-        alert("Success: " + data.msg);
-        console.log(data)
-    })
-    .fail (function(jqXHR, textStatus, errorThrown) {
-        alert("Error: " + jqXHR.responseText);
-    });
+        .done(function (data, textStatus, jqXHR) {
+            change_status_bar(FORWARD, 10);
+            alert("Success: " + data.msg);
+            console.log(data)
+        })
+        .fail(function (jqXHR, textStatus, errorThrown) {
+            alert("Error: " + jqXHR.responseText);
+        });
 }
 
+const {createApp, Vue} = Vue
 
-$("#starter").click(() => {
-    download(APP_NAMES[1]);
-    install(APP_NAMES[1]);
+const selection_app = createApp({
+    data() {
+        return {
+            is_active: false,
+            minutes: 10,
+            installers: []
+        }
+    },
+    mounted() {
+        pywebview.api.get_status().then(installers => {
+            console.log(installers)
+            this.installers = installers
+        });
+    }
 })
+
+const loading_app = createApp({
+    data() {
+        return {
+            is_active: true,
+        }
+    },
+    mounted() {
+        setTimeout(() => {
+            selection_app.is_active = true;
+            this.is_active = false;
+        }, 1000)
+    }
+})
+
+$(document).ready(function () {
+    window.addEventListener('pywebviewready', function () {
+        new Vue({
+            el: "main",
+            component:{
+                'selection-app': selection_app,
+                'loader-app': loading_app,
+            }
+        })
+        // loading_app.mount('#loading')
+        // selection_app.mount('#selection')
+    })
+});
+//
+// $("#starter").click(() => {
+//     pywebview.api.close()
+//     download(APP_NAMES[1]);
+//     install(APP_NAMES[1]);
+// })
 // $("#starter").click(function() {
 //     $.ajax({
 //         url: "/stage1",
