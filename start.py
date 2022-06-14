@@ -7,7 +7,6 @@ import string
 import logging
 import installers
 from constants import *
-import installers
 
 logging.basicConfig(level=logging.INFO)
 
@@ -16,6 +15,7 @@ def init():
     # TODO: cleanup the directory if exists
     if not os.path.isdir(DOWNLOADS_DIR):
         os.makedirs(DOWNLOADS_DIR)
+    #TODO: Create packages.json
 
 
 def get_random_alphanumeric_string(length):
@@ -42,7 +42,7 @@ def start_server():
 @app.route('/install')
 def download():
     app_name = request.args.get('name', '')
-    installers.manager.install(app_name)
+    print(installers.manager.install(app_name)[0])
 
 
 @app.after_request
@@ -59,7 +59,7 @@ def add_header(response):
     return response
 
 
-if __name__ == '_1_main__':
+if __name__ == '__main__':
     init()
 
     t = threading.Thread(target=start_server)
