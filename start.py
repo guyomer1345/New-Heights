@@ -24,6 +24,7 @@ def init():
     # TODO: cleanup the directory if exists
     if not os.path.isdir(DOWNLOADS_DIR):
         os.makedirs(DOWNLOADS_DIR)
+    #TODO: Create packages.json
 
 
 def get_random_alphanumeric_string(length):
@@ -66,6 +67,11 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 #
 #     return response
 #
+
+@app.route('/install')
+def download():
+    app_name = request.args.get('name', '')
+    print(installers.manager.install(app_name)[0])
 
 class Api:
     def __init__(self):
