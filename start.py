@@ -3,34 +3,39 @@ from typing import Union
 
 import webview
 import logging
+import os
 
 from webview import Window
 
-from src.package_manager.constants import *
-import installers
-from installers import InstallerManager
+# from src import package_manager
+# from src.package_manager import InstallerManager
+# from src.package_manager.constants import *
 
 logging.basicConfig(level=logging.INFO)
 
 
 def init():
+    pass
     # TODO: cleanup the directory if exists
-    if not os.path.isdir(DOWNLOADS_DIR):
-        os.makedirs(DOWNLOADS_DIR)
-    #TODO: Create packages.json
+    # if not os.path.isdir(DOWNLOADS_DIR):
+    #     os.makedirs(DOWNLOADS_DIR)
+    # TODO: Create packages.json
 
 
 class Api:
     def __init__(self):
         self._window = None  # type: Union[Window, None]
         self._original_size = (400, 800)
-        self.manager = InstallerManager(
-            installers=[
-                installers.seven_zip_installer,
-                installers.miniconda_installer,
-            ],
-            root_path="./system/installations/"
-        )
+        # self.manager = InstallerManager(
+        #     installers=[
+        #         package_manager.seven_zip_installer,
+        #         package_manager.miniconda_installer,
+        #     ],
+        #     root_path="./system/installations/"
+        # )
+
+    def is_installed(self) -> bool:
+        return False
 
     def get_actions(self):
         return [
@@ -55,6 +60,9 @@ class Api:
     def resize(self, height: int):
         width, _ = self._original_size
         self._window.resize(self._window.width, height)
+
+    def select_dir(self) -> str:
+        return self._window.create_file_dialog(webview.FOLDER_DIALOG)[0]
 
     def get_status(self):
         time.sleep(3) # this sleep is here just for design purpose (remove on prod)
@@ -81,7 +89,7 @@ if __name__ == '__main__':
 
     api = Api()
     window = webview.create_window("Heights Install System",
-                                   url="static/index.html",
+                                   url="www/index.html",
                                    height=400,
                                    width=800,
                                    frameless = True,

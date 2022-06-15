@@ -1,6 +1,6 @@
 from src.package_manager.i_installer import IInstaller
 from typing import List, Tuple
-from data_classes import dataclass
+from dataclasses import dataclass
 from typing import Dict, Any
 from enum import Enum
 import json

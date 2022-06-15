@@ -1,6 +1,4 @@
-from constants import JSON_CONTENT_TYPE, SUCCESS, StatusCodes
 from src.package_manager.i_installer import IInstaller
-from data_classes import Response
 from src.errors import *
 import subprocess
 import requests
@@ -54,7 +52,7 @@ class ExeInstaller(IInstaller):
             self.__download_file(path=path)
         except CriticalDownloadErrors as e:
             logging.error(f"Couldn't download {self.id}: {e}")
-            return Response(False, str(e), 
+            return Response(False, str(e),
                                 StatusCodes.INTERNAL_SERVER_ERROR.value, JSON_CONTENT_TYPE)
 
         except WarningDownloadErros as e:

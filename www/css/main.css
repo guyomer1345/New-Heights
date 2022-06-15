@@ -1,3 +1,8 @@
+:root {
+  --red: #ef5350;
+  --green: #66bb6a;
+}
+
 * {
   font-family: "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
   font-weight: 100;
@@ -35,7 +40,7 @@ nav {
   position: absolute;
 }
 #action-list .action .icon {
-  background: #ef5350;
+  background: var(--red);
   height: 100%;
   width: 50px;
   font-size: 30px;
@@ -56,7 +61,7 @@ nav {
   right: 0;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-  background: #66bb6a;
+  background: var(--green);
   color: white;
 }
 #action-list .action .action-name {
@@ -75,20 +80,11 @@ nav {
   left: 0;
   width: calc(100% - 50px);
   border-radius: 9px 0 0 9px;
-  background: #ef5350;
+  background: var(--red);
 }
 #action-list .action.remove .action-name {
-  background: #66bb6a;
+  background: var(--green);
   left: 50px;
   width: calc(100% - 50px);
   border-radius: 0 9px 9px 0;
-}
-
-/*#action-list .collection-item.remove{*/
-/*    transform: translateX(-50px);*/
-/*}*/
-/*#action-list .collection-item.install{*/
-/*    transform: translateX(50px);*/
-/*}*/
-
-/*# sourceMappingURL=main.css.map */
+}/*# sourceMappingURL=main.css.map */

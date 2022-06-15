@@ -8,102 +8,55 @@ const ROUTES_NAMES = {
 
 const {createApp} = Vue
 
-
-const select_app = {
-    name: "select-app",
-    template: "#select-app",
-    emits: ['wait'],
-
-    data() {
-        return {
-            minutes: 10,
-            actions: [],
-
-            loaded: false,
-            is_changed: false,
-        }
-    },
-    methods: {
-        get_action_class(action){
-            console.log(action)
-            if (action.selected === 'install'){
-                return 'remove'
-            }
-            if (action.selected === 'remove'){
-                return 'install'
-            }
-            if (action.actions.includes('remove')){
-                return 'remove'
-            }
-            if (action.actions.includes('install')){
-                return 'install'
-            }
-            return ''
-        },
-        set_selection(value) {
-            this.actions.forEach(action => action.selected = value);
-        },
-    },
-    watch: {
-        installers(val){
-            if (this.loaded){
-                this.is_changed = true;
-            }
-        }
-    },
-    mounted() {
-        M.AutoInit();
-        if (this.loaded) {
-            return;
-        }
-        pywebview.api.resize(800);
-        let result = pywebview.api.get_actions().then(actions => {
-            actions.forEach(action => action.selected = "")
-            this.actions = actions
-            this.loaded = true;
-        });
-        this.$emit('wait', result);
-    }
-}
-
-const load_app = {
-    name: "load-app",
-    template: "#load-app",
-    created() {
-        setTimeout(() => {
-            this.$router.push("/select");
-        }, 1000)
-    }
-}
-
 const main_app = {
     name: "App",
-    data() {
-        return {
-            is_loading: true,
-        };
+    components: {
+        "loading-screen": Vue.defineAsyncComponent(() => loadModule("./js/apps/load.vue", options)),
+        "navigation-bar": Vue.defineAsyncComponent(() => loadModule("./js/apps/nav.vue", options))
     },
     mounted() {
         M.AutoInit();
-        this.$router.push("/");
+        this.$router.push("/install");
     },
     methods: {
         close() {
             pywebview.api.close()
         },
         wait_for_promise(promise) {
-            this.is_loading = true;
-            promise.then(() => {
-                this.is_loading = false;
+            this.$refs.load.is_loading = true;
+            promise.finally(() => {
+                this.$refs.load.is_loading = false;
             })
         },
     }
 }
+const { loadModule, version } = window["vue3-sfc-loader"];
+const options = {
+    moduleCache: {
+      vue: Vue
+    },
+    async getFile(url) {
+      
+      const res = await fetch(url);
+      if ( !res.ok )
+        throw Object.assign(new Error(res.statusText + ' ' + url), { res });
+      return {
+        getContentData: asBinary => asBinary ? res.arrayBuffer() : res.text(),
+      }
+    },
+    addStyle(textContent) {
 
+      const style = Object.assign(document.createElement('style'), { textContent });
+      const ref = document.head.getElementsByTagName('style')[0] || null;
+      document.head.insertBefore(style, ref);
+    },
+  }
+  
 $(document).ready(function () {
     window.addEventListener('pywebviewready', () => {
         const routes = [
-            {path: "/", component: select_app},
+            {path: "/select", component: () => loadModule("./js/apps/select.vue", options)},
+            {path: "/install", component: () => loadModule("./js/apps/install.vue", options)},
         ];
 
         const router = VueRouter.createRouter({
