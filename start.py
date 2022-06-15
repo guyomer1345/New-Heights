@@ -53,7 +53,7 @@ class Api:
                 "id": "miniconda",
                 "actions": ["remove"]
             },
-        ]
+        ] * 4
 
     def check_update(self):
         pass

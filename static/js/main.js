@@ -55,7 +55,7 @@ const select_app = {
         if (this.loaded) {
             return;
         }
-        pywebview.api.resize(500);
+        pywebview.api.resize(800);
         let result = pywebview.api.get_actions().then(actions => {
             actions.forEach(action => action.selected = "")
             this.actions = actions
