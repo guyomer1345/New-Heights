@@ -6,66 +6,6 @@ const ROUTES_NAMES = {
     install_route: 'install'
 };
 
-// const templateFunc =
-//     (route_name, app_name) => `/${route_name}?name=${app_name}`;
-
-function get_status_bar() {
-    return document.getElementsByClassName('determinate').item(0);
-}
-
-function get_status_bar_width() {
-    return get_status_bar().style.width;
-}
-
-function change_status_bar(direction, amount) {
-    let width = get_status_bar_width();
-    let widthInt = parseInt(width.substring(0, 2));
-
-    get_status_bar().style.width = widthInt + direction * amount + "%";
-}
-
-const download = app_name => {
-    let download_url = ROUTES_NAMES.download_route;
-
-    $.ajax({
-        url: download_url,
-        type: "get", //Use "PUT" for HTTP PUT methods
-        dataType: 'json',
-        data: {
-            name: app_name,
-        }
-    })
-        .done(function (data, textStatus, jqXHR) {
-            change_status_bar(FORWARD, 10);
-            alert("Success: " + data.msg);
-            console.log(data)
-        })
-        .fail(function (jqXHR, textStatus, errorThrown) {
-            alert("Error: " + jqXHR.responseText);
-        });
-}
-
-const install = app_name => {
-    let install_url = ROUTES_NAMES.install_route;
-
-    $.ajax({
-        url: install_url,
-        type: "get", //Use "PUT" for HTTP PUT methods
-        dataType: 'json',
-        data: {
-            name: app_name,
-        }
-    })
-        .done(function (data, textStatus, jqXHR) {
-            change_status_bar(FORWARD, 10);
-            alert("Success: " + data.msg);
-            console.log(data)
-        })
-        .fail(function (jqXHR, textStatus, errorThrown) {
-            alert("Error: " + jqXHR.responseText);
-        });
-}
-
 const {createApp} = Vue
 
 const select_app = {
@@ -83,15 +23,29 @@ const select_app = {
         }
     },
     methods: {
+        get_action_class(action){
+            console.log(action)
+            if (action.selected === 'install'){
+                return 'remove'
+            }
+            if (action.selected === 'remove'){
+                return 'install'
+            }
+            if (action.actions.includes('remove')){
+                return 'remove'
+            }
+            if (action.actions.includes('install')){
+                return 'install'
+            }
+            return ''
+        },
         set_selection(value) {
-            // this.installers.forEach(element => element.is_installed = value);
+            this.actions.forEach(action => action.selected = value);
         },
     },
     watch: {
         installers(val){
-            console.log(val)
             if (this.loaded){
-                console.log(val)
                 this.is_changed = true;
             }
         }
@@ -103,6 +57,7 @@ const select_app = {
         }
         pywebview.api.resize(500);
         let result = pywebview.api.get_actions().then(actions => {
+            actions.forEach(action => action.selected = "")
             this.actions = actions
             this.loaded = true;
         });
@@ -129,8 +84,6 @@ const main_app = {
     },
     mounted() {
         M.AutoInit();
-        console.log(this)
-        console.log("App")
         this.$router.push("/");
     },
     methods: {
@@ -138,7 +91,6 @@ const main_app = {
             pywebview.api.close()
         },
         wait_for_promise(promise) {
-            console.log("@wait='wait_for_promise'")
             this.is_loading = true;
             promise.then(() => {
                 this.is_loading = false;

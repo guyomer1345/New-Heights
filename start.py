@@ -27,52 +27,6 @@ def init():
     #TODO: Create packages.json
 
 
-def get_random_alphanumeric_string(length):
-    letters_and_digits = string.ascii_letters + string.digits
-    result_str = ''.join((random.choice(letters_and_digits) for _ in range(
-        length)))
-
-    return result_str
-
-
-app = Flask(__name__, static_url_path='')
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
-
-
-# @app.route('/')
-# def hello_world():
-#     return app.send_static_file('register.html')
-
-
-# def start_server():
-#     app.run(host='127.0.0.1', port=54321)
-
-
-# @app.route('/install')
-# def download():
-#     app_name = request.args.get('name', '')
-#     installers.manager.install(app_name)
-
-
-# @app.after_request
-# def add_header(response):
-#     """
-#     Add headers to both force latest IE rendering engine or Chrome Frame,
-#     and also to cache the rendered page for 10 minutes.
-#     """
-#     response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-#     response.headers["Pragma"] = "no-cache"
-#     response.headers["Expires"] = "1"
-#     response.headers['Cache-Control'] = 'public, max-age=0'
-#
-#     return response
-#
-
-@app.route('/install')
-def download():
-    app_name = request.args.get('name', '')
-    print(installers.manager.install(app_name)[0])
-
 class Api:
     def __init__(self):
         self._window = None  # type: Union[Window, None]
@@ -89,7 +43,7 @@ class Api:
         return [
             {
                 "id": "python",
-                "actions": ["uninstall", "update"]
+                "actions": ["remove", "update"]
             },
             {
                 "id": "7-zip",
@@ -97,7 +51,7 @@ class Api:
             },
             {
                 "id": "miniconda",
-                "actions": ["uninstall"]
+                "actions": ["remove"]
             },
         ]
 
