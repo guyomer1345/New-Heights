@@ -8,6 +8,7 @@ const ROUTES_NAMES = {
 
 const {createApp} = Vue
 
+
 const select_app = {
     name: "select-app",
     template: "#select-app",
