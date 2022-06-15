@@ -32,7 +32,6 @@ class Heights:
         return True
 
     def install(self) -> None:
-        print(__file__)
 
         status = {
             'is_installed': True,

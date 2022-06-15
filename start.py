@@ -7,8 +7,7 @@ import logging
 from webview import Window
 
 from src.package_manager.constants import *
-import installers
-from installers import InstallerManager
+from src.package_manager import InstallerManager, exe_installers
 
 logging.basicConfig(level=logging.INFO)
 
@@ -26,8 +25,8 @@ class Api:
         self._original_size = (400, 800)
         self.manager = InstallerManager(
             installers=[
-                installers.seven_zip_installer,
-                installers.miniconda_installer,
+                exe_installers.seven_zip_installer,
+                exe_installers.miniconda_installer,
             ],
             root_path="./system/installations/"
         )
@@ -81,7 +80,7 @@ if __name__ == '__main__':
 
     api = Api()
     window = webview.create_window("Heights Install System",
-                                   url="static/index.html",
+                                   url="www/index.html",
                                    height=400,
                                    width=800,
                                    frameless = True,
