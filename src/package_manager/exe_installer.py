@@ -1,7 +1,7 @@
 from constants import JSON_CONTENT_TYPE, SUCCESS, StatusCodes
-from installers.i_installer import IInstaller
+from src.package_manager.i_installer import IInstaller
 from data_classes import Response
-from errors import *
+from src.errors import *
 import subprocess
 import requests
 import logging

@@ -2,7 +2,7 @@ import os
 from enum import Enum, EnumMeta
 
 WORK_DIR = os.path.dirname(os.path.realpath(__file__))
-DOWNLOADS_DIR = os.path.join(WORK_DIR, "downloads") + os.path.sep
+DOWNLOADS_DIR = os.path.join(WORK_DIR, "../../downloads") + os.path.sep
 INSTALLATIONS_DIR = os.path.join(WORK_DIR, "system",
                                  "installations") + os.path.sep
 JSON_CONTENT_TYPE = {'ContentType': 'application/json'}
