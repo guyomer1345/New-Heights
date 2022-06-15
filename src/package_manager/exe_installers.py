@@ -1,4 +1,4 @@
-from installers.exe_installer import ExeInstaller
+from src.package_manager.exe_installer import ExeInstaller
 from constants import Apps, DOWNLOADS_DIR
 
 miniconda = Apps.MiniConda.value

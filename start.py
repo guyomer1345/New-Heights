@@ -1,21 +1,14 @@
 import time
-from typing import Union, List, Dict, Any
+from typing import Union
 
-from flask import Flask, request
 import webview
-import threading
-import sys
-import random
-import string
 import logging
 
 from webview import Window
 
-import installers
-from constants import *
+from src.package_manager.constants import *
 import installers
 from installers import InstallerManager
-from installers.exe_installer import ExeInstaller
 
 logging.basicConfig(level=logging.INFO)
 
