@@ -22,7 +22,7 @@ The installer designed for a simple usage for students, teachers and classroom m
 ```
 TBD
 ```
-
+ 
 ## Authors
 
 TBD
