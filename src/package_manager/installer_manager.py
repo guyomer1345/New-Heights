@@ -1,6 +1,6 @@
 from src.package_manager.i_installer import IInstaller
 from typing import List, Tuple
-from data_classes import dataclass
+from dataclasses import dataclass
 from typing import Dict, Any
 from enum import Enum
 import json
@@ -36,7 +36,7 @@ class InstallerManager:
 
     def __update_installed_packages_json(self, installed_packages: List[Dict[str, str]]) -> None:
         with open(f'{self.root_path}/packages.json', 'w') as f:
-            f.write(json.dumps(installed_packages))
+            f.write(json.dumps({'installed_packages': installed_packages}))
 
     def __add_package(self, installed_packages: str, current_package: Package) -> None:
         installed_packages['installed_packages'].append({"id": current_package.id, 
