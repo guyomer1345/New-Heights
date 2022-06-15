@@ -3,25 +3,24 @@
 
 <head>
     <!--Import Google Icon Font-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+          integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
-    <link type="text/css" rel="stylesheet" href="css/main.css" media="screen,projection"/>
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Heights</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link type="text/css" rel="stylesheet" href="css/main.css" media="screen,projection"/>
 
 </head>
 <style media="screen">
     html {
         background: #fbfbfb;
-    }
-
-    .progress {
-        background-color: #e6e6e6;
-        height: 12px;
     }
 
 
@@ -31,46 +30,71 @@
 </style>
 
 <body>
-<main>
-    <loader-app class="container" id="loading">
-        <div v-if="is_active">
-            <div class="preloader-wrapper big active">
-                <div class="spinner-layer spinner-blue-only">
-                    <div class="circle-clipper left">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="gap-patch">
-                        <div class="circle"></div>
-                    </div>
-                    <div class="circle-clipper right">
-                        <div class="circle"></div>
-                    </div>
-                </div>
-            </div>
+<div id="app">
+    <div class="container" id="loading" v-if="is_loading">
+        <div class="progress">
+            <div class="indeterminate"></div>
         </div>
+    </div>
+    <div class="navbar-fixed">
+        <nav class="pywebview-drag-region  yellow">
+            <div class="nav-wrapper">
+                <img src="site/images/logo.png" style="height: 100%" class="brand-logo left">
+                <ul class="right">
+                    <li><a href="#" @click="close"><i class="material-icons black-text">close</i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
 
-    </loader-app>
+    <router-view @wait='wait_for_promise'></router-view>
+</div>
 
-    <selection-app class="container" id="selection">
-        <div class="collection" v-if="is_active">
+
+<div id="select-app" hidden>
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large waves-green">
+            <i class="large material-icons">check</i>
+        </a>
+        <ul>
+            <li @click="set_selection(true)">
+                <a class="btn-floating cyan darken-1"><i class="material-icons">select_all</i></a>
+            </li>
+            <li @click="set_selection(false)">
+                <a class="btn-floating orange darken-1"><i class="material-icons">clear_all</i></a>
+            </li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="collection" id="action-list">
             <a
-                    v-for="installer in installers"
-                    :class="{active: installer.is_installed}"
-                    @click="installer.is_installed = !installer.is_installed"
+                    v-for="action in actions"
                     class="collection-item"
+                    :class="{
+                    remove: action.actions.includes('uninstall'),
+                    install: action.actions.includes('install'),
+                    }"
             >
-                {{ installer }}
+                {{ action.id }}
+                <!--
+                <div class="secondary-content">
+                    <i class="material-icons" v-if="!installer.is_installed">check_box_outline_blank</i>
+                    <i class="material-icons" v-if="installer.is_installed">check_box</i>
+                </div>
+                -->
             </a>
 
         </div>
+    </div>
 
-    </selection-app>
-</main>
+</div>
 
 <!--JavaScript at end of body for optimized loading-->
 <script src="https://unpkg.com/vue@3"></script>
+<script src="https://unpkg.com/vue-router@4"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
 <script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/server.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 </body>
 

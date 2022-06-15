@@ -66,76 +66,100 @@ const install = app_name => {
         });
 }
 
-const {createApp, Vue} = Vue
+const {createApp} = Vue
 
-const selection_app = createApp({
+const select_app = {
+    name: "select-app",
+    template: "#select-app",
+    emits: ['wait'],
+
     data() {
         return {
-            is_active: false,
             minutes: 10,
-            installers: []
-        }
-    },
-    mounted() {
-        pywebview.api.get_status().then(installers => {
-            console.log(installers)
-            this.installers = installers
-        });
-    }
-})
+            actions: [],
 
-const loading_app = createApp({
-    data() {
-        return {
-            is_active: true,
+            loaded: false,
+            is_changed: false,
+        }
+    },
+    methods: {
+        set_selection(value) {
+            // this.installers.forEach(element => element.is_installed = value);
+        },
+    },
+    watch: {
+        installers(val){
+            console.log(val)
+            if (this.loaded){
+                console.log(val)
+                this.is_changed = true;
+            }
         }
     },
     mounted() {
+        M.AutoInit();
+        if (this.loaded) {
+            return;
+        }
+        pywebview.api.resize(500);
+        let result = pywebview.api.get_actions().then(actions => {
+            this.actions = actions
+            this.loaded = true;
+        });
+        this.$emit('wait', result);
+    }
+}
+
+const load_app = {
+    name: "load-app",
+    template: "#load-app",
+    created() {
         setTimeout(() => {
-            selection_app.is_active = true;
-            this.is_active = false;
+            this.$router.push("/select");
         }, 1000)
     }
-})
+}
+
+const main_app = {
+    name: "App",
+    data() {
+        return {
+            is_loading: true,
+        };
+    },
+    mounted() {
+        M.AutoInit();
+        console.log(this)
+        console.log("App")
+        this.$router.push("/");
+    },
+    methods: {
+        close() {
+            pywebview.api.close()
+        },
+        wait_for_promise(promise) {
+            console.log("@wait='wait_for_promise'")
+            this.is_loading = true;
+            promise.then(() => {
+                this.is_loading = false;
+            })
+        },
+    }
+}
 
 $(document).ready(function () {
-    window.addEventListener('pywebviewready', function () {
-        new Vue({
-            el: "main",
-            component:{
-                'selection-app': selection_app,
-                'loader-app': loading_app,
-            }
-        })
-        // loading_app.mount('#loading')
-        // selection_app.mount('#selection')
+    window.addEventListener('pywebviewready', () => {
+        const routes = [
+            {path: "/", component: select_app},
+        ];
+
+        const router = VueRouter.createRouter({
+            history: VueRouter.createWebHashHistory(),
+            routes,
+        });
+
+        const app = createApp(main_app);
+        app.use(router);
+        app.mount("#app");
     })
 });
-//
-// $("#starter").click(() => {
-//     pywebview.api.close()
-//     download(APP_NAMES[1]);
-//     install(APP_NAMES[1]);
-// })
-// $("#starter").click(function() {
-//     $.ajax({
-//         url: "/stage1",
-//         type: "get", //Use "PUT" for HTTP PUT methods
-//         dataType: 'json',
-//         data: {
-//             key : "value",
-//         }
-//     })
-//     .done (function(data, textStatus, jqXHR) {
-//         change_status_bar(FORWARD, 10);
-//         alert("Success: " + data.msg);
-//         console.log(data)
-//     })
-//     .fail (function(jqXHR, textStatus, errorThrown) {
-//         alert("Error: " + jqXHR.responseText);
-//     })
-//     .always (function(jqXHROrData, textStatus, jqXHROrErrorThrown) {
-//         alert("complete");
-//     });
-// });
-
