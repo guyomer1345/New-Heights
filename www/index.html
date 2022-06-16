@@ -1,112 +1,35 @@
 <!DOCTYPE html>
 <html lang="en-us">
+    <head>
+        <!--Import Google Icon Font-->
+        <link rel="stylesheet" href="./libs/normalize/normalize.min.css" />
 
-<head>
-    <!--Import Google Icon Font-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
-          integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"
-            integrity="sha512-6PM0qYu5KExuNcKt5bURAoT6KCThUmHRewN3zUFNaoI6Di7XJPTMoT6K0nsagZKk2OB4L7E3q1uQKHNHd4stIQ=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="./libs/font-awesome/all.min.css" />
 
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+        <link rel="stylesheet" href="libs/materialize/materialize.min.css" media="screen,projection" />
 
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Heights</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link type="text/css" rel="stylesheet" href="css/main.css" media="screen,projection"/>
+        <title>Heights</title>
 
-</head>
-<style media="screen">
-    html {
-        background: #fbfbfb;
-    }
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+        <link type="text/css" rel="stylesheet" href="css/main.css" media="screen,projection" />
+    </head>
 
+    <body>
+        <div id="navbar" class="pywebview-drag-region"></div>
+        <div id="app"></div>
 
-    .progress .determinate {
-        background-color: #448aff;
-    }
-</style>
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="https://unpkg.com/vue@3"></script>
+        <script type="text/javascript" src="https://unpkg.com/vue-router@4"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue3-sfc-loader"></script>
 
-<body>
-<div id="app">
-    <div class="container" id="loading" v-if="is_loading">
-        <div class="progress">
-            <div class="indeterminate"></div>
-        </div>
-    </div>
-    <div class="navbar-fixed">
-        <nav class="pywebview-drag-region  yellow  lighten-1">
-            <div class="nav-wrapper">
-                <img src="site/images/logo.png" style="height: 100%" class="brand-logo left">
-                <ul class="right">
-                    <li><a href="#" @click="close"><i class="material-icons black-text">close</i></a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
+        <script type="text/javascript" src="libs/font-awesome/all.min.js"></script>
+        <script type="text/javascript" src="libs/materialize/materialize.min.js"></script>
+        <script type="text/javascript" src="libs/jquary/jquery-3.6.0.min.js"></script>
 
-    <router-view @wait='wait_for_promise'></router-view>
-</div>
-
-
-<div id="select-app" hidden>
-    <div class="fixed-action-btn">
-        <a class="btn-floating btn-large waves-green">
-            <i class="large material-icons">check</i>
-        </a>
-        <ul>
-            <li @click="set_selection('install')">
-                <a class="btn-floating cyan darken-1"><i class="material-icons">select_all</i></a>
-            </li>
-            <li @click="set_selection('remove')">
-                <a class="btn-floating orange darken-1"><i class="material-icons">clear_all</i></a>
-            </li>
-        </ul>
-    </div>
-    <div class="container">
-        <div id="action-list">
-            <div class="action"
-                 v-for="action in actions"
-                 :class="get_action_class(action)"
-            >
-                <div class="icon action-remove"
-                     @click="action.selected = 'remove'"
-                >
-                    <i class="fa-solid fa-circle-xmark"></i>
-                </div>
-                <div class="icon action-install"
-                     @click="action.selected = 'install'"
-                >
-                    <i class="fa-solid fa-circle-arrow-down"></i>
-                </div>
-                <div class="action-name">{{ action.id }}</div>
-            </div>
-            <!--
-            <div class="secondary-content">
-                <i class="material-icons" v-if="!installer.is_installed">check_box_outline_blank</i>
-                <i class="material-icons" v-if="installer.is_installed">check_box</i>
-            </div>
-            -->
-        </div>
-    </div>
-
-</div>
-
-<!--JavaScript at end of body for optimized loading-->
-<script src="https://unpkg.com/vue@3"></script>
-<script src="https://unpkg.com/vue-router@4"></script>
-<script type="text/javascript" src="js/materialize.min.js"></script>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/server.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-</body>
-
+        <script type="text/javascript" src="js/server.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+    </body>
 </html>

@@ -3,6 +3,7 @@ from typing import Union
 
 import webview
 import logging
+import os
 
 from webview import Window
 
@@ -13,10 +14,11 @@ logging.basicConfig(level=logging.INFO)
 
 
 def init():
+    pass
     # TODO: cleanup the directory if exists
-    if not os.path.isdir(DOWNLOADS_DIR):
-        os.makedirs(DOWNLOADS_DIR)
-    #TODO: Create packages.json
+    # if not os.path.isdir(DOWNLOADS_DIR):
+    #     os.makedirs(DOWNLOADS_DIR)
+    # TODO: Create packages.json
 
 
 class Api:
@@ -30,6 +32,9 @@ class Api:
             ],
             root_path="./system/installations/"
         )
+        
+    def is_installed(self) -> bool:
+        return False
 
     def get_actions(self):
         return [
@@ -54,6 +59,9 @@ class Api:
     def resize(self, height: int):
         width, _ = self._original_size
         self._window.resize(self._window.width, height)
+
+    def select_dir(self) -> str:
+        return self._window.create_file_dialog(webview.FOLDER_DIALOG)[0]
 
     def get_status(self):
         time.sleep(3) # this sleep is here just for design purpose (remove on prod)
