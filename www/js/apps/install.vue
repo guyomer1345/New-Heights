@@ -8,15 +8,16 @@
 </template>
 <script>
 export default {
-    data(){
-        return{
+    emits: ['wait'],
+    data() {
+        return {
             path: "Not selected"
         }
     },
-    methods:{
-        select_path(){
-                let result = pywebview.api.select_dir().then(path => this.path = path);
-                this.$emit('wait', result);
+    methods: {
+        select_path() {
+            let result = pywebview.api.select_dir().then(path => this.path = path);
+            this.$emit('wait', result);
         }
     }
 }
