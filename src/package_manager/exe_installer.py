@@ -41,7 +41,7 @@ class ExeInstaller(IInstaller):
         except socket.error as e:
             raise(InvalidDownloadUrl(e))
 
-    def  __download_file_with_errors(self, path) -> Response:
+    def  __download_file_with_errors(self, path) -> bool:
         """
         This function wraps the download_file function and adds error handling
 
@@ -52,13 +52,11 @@ class ExeInstaller(IInstaller):
             self.__download_file(path=path)
         except CriticalDownloadErrors as e:
             logging.error(f"Couldn't download {self.id}: {e}")
-            return Response(False, str(e),
-                                StatusCodes.INTERNAL_SERVER_ERROR.value, JSON_CONTENT_TYPE)
-
+            return False
         except WarningDownloadErros as e:
             logging.warning(f"Warning in downloading {self.id}: {e}")
         
-        return  Response(True, SUCCESS, StatusCodes.OK.value, JSON_CONTENT_TYPE)
+        return True
 
 
     def __install_exe(self, path) -> None:
@@ -87,7 +85,7 @@ class ExeInstaller(IInstaller):
         if not os.path.exists(self.install_path):
             raise(InstallFailed(f"Failed to install {self.id}: {err}"))
 
-    def __install_exe_with_errors(self, path) -> Response:
+    def __install_exe_with_errors(self, path) -> bool:
         """
         This functions wraps install_exe and handles errors
         :param path: The path to install the exe to
@@ -97,15 +95,14 @@ class ExeInstaller(IInstaller):
             self.__install_exe(path=path)
         except CriticalInstallerErrors as e:
             logging.error(e)
-            return Response(False, str(e), 
-                                StatusCodes.INTERNAL_SERVER_ERROR.value, JSON_CONTENT_TYPE)
+            return False
 
         except WarningInstallerErros as e:
             logging.warning(e)
 
-        return  Response(True, SUCCESS, StatusCodes.OK.value, JSON_CONTENT_TYPE)
+        return  True
 
-    def install(self) -> Response:
+    def install(self) -> bool:
         """
         This functions downloads and installs a program
 
@@ -114,14 +111,14 @@ class ExeInstaller(IInstaller):
         path = os.path.join(self.download_path, f'{self.id}.exe')
         
         download_response = self.__download_file_with_errors(path = path)
-        if not download_response.success_status:
+        if not download_response:
             return download_response
 
         logging.info(f'Finished downloading {self.id}')
 
 
         install_response = self.__install_exe_with_errors(path = path)
-        if not install_response.success_status:
+        if not install_response:
             return install_response
 
         logging.info(f'Finsihed installing {self.id}')

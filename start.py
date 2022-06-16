@@ -7,9 +7,8 @@ import os
 
 from webview import Window
 
-# from src import package_manager
-# from src.package_manager import InstallerManager
-# from src.package_manager.constants import *
+from src.package_manager.constants import *
+from src.package_manager import InstallerManager, exe_installers
 
 logging.basicConfig(level=logging.INFO)
 
@@ -26,14 +25,14 @@ class Api:
     def __init__(self):
         self._window = None  # type: Union[Window, None]
         self._original_size = (400, 800)
-        # self.manager = InstallerManager(
-        #     installers=[
-        #         package_manager.seven_zip_installer,
-        #         package_manager.miniconda_installer,
-        #     ],
-        #     root_path="./system/installations/"
-        # )
-
+        self.manager = InstallerManager(
+            installers=[
+                exe_installers.seven_zip_installer,
+                exe_installers.miniconda_installer,
+            ],
+            root_path="./system/installations/"
+        )
+        
     def is_installed(self) -> bool:
         return False
 
