@@ -1,7 +1,7 @@
 # New-Heights
 This is the new version of the good old heights student env installer.
 
-![logo](logo.png)
+![logo](Heights.ico)
 
 ## Description
 
