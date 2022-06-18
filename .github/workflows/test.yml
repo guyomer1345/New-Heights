@@ -1,9 +1,9 @@
-name: test workflow
+name: test
 on: [push]
 jobs:
   test1:
     runs-on: ubuntu-latest
-    setps:
+    steps:
       - run: echo "hello"
       - run: echo "file" > file.txt
       - run: ls
