@@ -1,0 +1,10 @@
+name: test workflow
+on: [push]
+jobs:
+  test1:
+    runs-on: ubuntu-latest
+    setps:
+      - run: echo "hello"
+      - run: echo "file" > file.txt
+      - run: ls
+      
