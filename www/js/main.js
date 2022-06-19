@@ -1,4 +1,5 @@
-const { createApp } = Vue;
+const { reactive, ref, createApp } = Vue;
+const { createStore } = Vuex;
 const { loadModule, version } = window["vue3-sfc-loader"];
 
 const options = {
@@ -19,6 +20,7 @@ const options = {
     },
 };
 
+
 $(document).ready(() => {
     window.addEventListener("pywebviewready", () => {
         const routes = [
@@ -29,11 +31,11 @@ $(document).ready(() => {
             history: VueRouter.createWebHashHistory(),
             routes,
         });
-
+        
         const app = createApp(Vue.defineAsyncComponent(() => loadModule("./js/apps/app.vue", options)));
         const navbar = createApp(Vue.defineAsyncComponent(() => loadModule("./js/apps/nav.vue", options)));
         app.use(router);
-        navbar.mount("#navbar")
         app.mount("#app");
+        navbar.mount("#navbar");
     });
 });

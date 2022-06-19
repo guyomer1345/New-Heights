@@ -37,6 +37,8 @@ class Api:
         return False
 
     def get_actions(self):
+        
+        time.sleep(2) # this sleep is here just for design purpose (remove on prod)
         return [
             {
                 "id": "python",
@@ -64,7 +66,6 @@ class Api:
         return self._window.create_file_dialog(webview.FOLDER_DIALOG)[0]
 
     def get_status(self):
-        time.sleep(3) # this sleep is here just for design purpose (remove on prod)
         status = self.manager.get_available()
         return status
 

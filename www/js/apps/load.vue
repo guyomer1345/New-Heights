@@ -11,12 +11,19 @@
 
 <script>
 export default {
-    name: "load-app",
+    name: "load_app",
+    emits:[
+        "mounted"
+    ],
     data() {
         return {
             is_loading: false,
         };
-    }
+    },
+    mounted() {
+        console.log("Loading screen is mounted");
+        this.$emit('mounted')
+    },
 };
 </script>
 

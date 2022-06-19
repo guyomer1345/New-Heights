@@ -1,21 +1,4 @@
 <template>
-  <div class="fixed-action-btn">
-    <a class="btn-floating btn-large waves-green">
-      <i class="large material-icons">check</i>
-    </a>
-    <ul>
-      <li @click="set_selection('install')">
-        <a class="btn-floating cyan darken-1"
-          ><i class="material-icons">select_all</i></a
-        >
-      </li>
-      <li @click="set_selection('remove')">
-        <a class="btn-floating orange darken-1"
-          ><i class="material-icons">clear_all</i></a
-        >
-      </li>
-    </ul>
-  </div>
   <div class="container">
     <div id="action-list">
       <div
@@ -52,7 +35,6 @@ export default {
     },
     methods: {
         get_action_class(action){
-            console.log(action)
             if (action.selected === 'install'){
                 return 'remove'
             }
@@ -89,7 +71,8 @@ export default {
             this.actions = actions
             this.loaded = true;
         });
-        this.$emit('wait', result);
+        this.$emit('wait', result)
+        
     }
 };
 </script>

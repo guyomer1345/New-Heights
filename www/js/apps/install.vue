@@ -16,7 +16,9 @@ export default {
     },
     methods: {
         select_path() {
-            let result = pywebview.api.select_dir().then(path => this.path = path);
+            let result = pywebview.api.select_dir().then((path) => { 
+                this.path = path
+                });
             this.$emit('wait', result);
         }
     }
