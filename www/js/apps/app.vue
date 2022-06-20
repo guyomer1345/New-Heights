@@ -2,9 +2,11 @@
     <loading-screen @mounted="load_mounted" ref="load">
     </loading-screen>
     <next-btn @next="next"></next-btn>
-    <router-view @wait="wait_for_promise" v-slot="{ Component }">
-        <component ref="current_app" :is="Component" />
-    </router-view>
+    <div id="app-contianer">
+        <router-view @wait="wait_for_promise" v-slot="{ Component }">
+            <component ref="current_app" :is="Component" />
+        </router-view>
+    </div>
 </template>
 <script>
 // import laod_app from loadModule("./js/apps/components/next_btn.vue", options);
@@ -16,6 +18,7 @@ export default {
     },
     mounted() {
         M.AutoInit();
+        loadModule("./js/apps/load.vue", options).then((a) => console.log("load.vue", a));
         this.$router.push("/select");
     },
     data() {
@@ -33,11 +36,11 @@ export default {
             pywebview.api.close()
         },
         next() {
-            console.log("next ", this.$refs);
-            console.log("Current app", this.$router)
+            console.log("/select", this.$refs.current_app);
+            this.$router.push("/install");
+            console.log("/install", this.$refs.current_app);
         },
         wait_for_promise(promise) {
-            console.log("wait_for_promise", this.load_promise);
             this.load_promise.then(() => {
                 console.log(this.$refs);
                 this.$refs.load.is_loading = true;
@@ -49,6 +52,32 @@ export default {
     }
 }
 </script>
-<style lang="">
+<style scoped>
+#app-contianer {
+    width: 100%;
+    height: calc(100vh - 70px);
+    overflow-y: scroll;
     
+}
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #3f3f3f #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #3f3f3f;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+  }
 </style>

@@ -65,7 +65,7 @@ export default {
         if (this.loaded) {
             return;
         }
-        pywebview.api.resize(800);
+        pywebview.api.resize(600);
         let result = pywebview.api.get_actions().then(actions => {
             actions.forEach(action => action.selected = "")
             this.actions = actions

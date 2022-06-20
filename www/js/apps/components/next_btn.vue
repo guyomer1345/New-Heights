@@ -1,6 +1,7 @@
 <template>
     <div class="fixed-action-btn">
         <a 
+        @click="this.$emit('next')"
         class="btn-floating btn-large waves-green">
             <i class="large material-icons">navigate_next</i>
         </a>
