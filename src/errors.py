@@ -48,3 +48,8 @@ class InstallFailed(CriticalDownloadErrors):
 class InvalidDownloadUrl(CriticalDownloadErrors):
     """Raise when the download url is invalid"""
     pass
+
+class ExeUninstallerError(CriticalInstallerErrors):
+    """Raise when the uninstaller failed"""
+    pass
+

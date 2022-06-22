@@ -2,9 +2,9 @@ import json
 import os
 
 class Heights:
-    def __init__(self, path: str, version: str):
-        self.path = path
+    def __init__(self, version: str):
         self.version = version
+        self.path = os.getcwd()
 
     def __versiontuple(self, version: str) -> int:
         return tuple(map(int, (version.split("."))))
@@ -31,14 +31,14 @@ class Heights:
         
         return True
 
-    def install(self) -> None:
+    def install(self, path) -> None:
 
         status = {
             'is_installed': True,
             'version': self.version
         }
 
-        with open(f'{self.path}/status.json', 'w') as f:
+        with open(f'{path}/status.json', 'w') as f:
             f.write(json.dumps(status))
 
     def update() -> None:

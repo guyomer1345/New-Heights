@@ -5,7 +5,6 @@ miniconda = Apps.MiniConda.value
 seven_zip = Apps.SevenZip.value
 
 seven_zip_installer = ExeInstaller(
-                                                        DOWNLOADS_DIR, 
                                                         seven_zip.APP_NAME,
                                                          '1.0.0', 
                                                         seven_zip.URL,  
@@ -14,7 +13,6 @@ seven_zip_installer = ExeInstaller(
                                                         )
 
 miniconda_installer = ExeInstaller(
-                                                        DOWNLOADS_DIR, 
                                                         miniconda.APP_NAME,
                                                          '1.0.0', 
                                                         miniconda.URL,  

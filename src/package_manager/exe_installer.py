@@ -1,17 +1,18 @@
 from src.package_manager.i_installer import IInstaller
 from src.errors import *
 import subprocess
+import tempfile
 import requests
 import logging
 import socket
+import shutil
 import os
 
 logging.basicConfig(level=logging.INFO)
 
 class ExeInstaller(IInstaller):
-    def __init__(self, download_path, id, version, url, install_cmd, install_path) -> None:
+    def __init__(self,  id, version, url, install_cmd, install_path) -> None:
         super().__init__(id, version)
-        self.download_path = download_path
         self.url = url
         self.install_cmd = install_cmd
         self.install_path = install_path
@@ -102,13 +103,33 @@ class ExeInstaller(IInstaller):
 
         return  True
 
+    def __find_uninstaller(self) -> str:
+        for root, dirs, files in os.walk(self.install_path):
+            for file in files:
+                if 'uninstall' in file.lower() and 'exe' in file.lower():
+                    return (os.path.join(root, file))
+
+        raise(FileNotFoundError(f"Could'nt find the uninstaller for {self.id}"))
+
+    def __run_uninstaller(self, uninstaller) -> None:
+        proc = subprocess.Popen(f'"{uninstaller}" /S',
+                        stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                        shell=True)
+
+        out, err = proc.communicate()
+        err = err.decode()
+
+        if err:
+            raise(ExeUninstallerError(f"Failed to uninstall {self.id}: {err}"))
+
     def install(self) -> bool:
         """
         This functions downloads and installs a program
 
         :return: Response object indicaitng whether it succeeded or not
         """
-        path = os.path.join(self.download_path, f'{self.id}.exe')
+        temp_dir = tempfile.TemporaryDirectory()
+        path = os.path.join(temp_dir.name, f'{self.id}.exe')
         
         download_response = self.__download_file_with_errors(path = path)
         if not download_response:
@@ -124,5 +145,23 @@ class ExeInstaller(IInstaller):
         logging.info(f'Finsihed installing {self.id}')
         return install_response
 
-    def uninstall(self):
-       pass
+    def uninstall(self) -> bool:
+        try:
+            uninstaller = self.__find_uninstaller()
+        except FileNotFoundError as e:
+            logging.error(e)
+            return False
+
+        try:
+            self.__run_uninstaller(uninstaller)
+        except ExeUninstallerError as e:
+            logging.error(e)
+            return False
+
+        shutil.rmtree(self.install_path, ignore_errors=True)
+        return True
+
+
+
+        
+        

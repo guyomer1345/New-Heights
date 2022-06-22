@@ -29,8 +29,11 @@ class InstallerManager:
         """
         returns the current installed packages
         """
-        with open(f'{self.root_path}/packages.json', 'r') as f:
-            installed_packages = json.loads(f.read())
+        try:
+            with open(f'{self.root_path}/packages.json', 'r') as f:
+                installed_packages = json.loads(f.read())
+        except FileNotFoundError:
+            return []
         
         return installed_packages['installed_packages']
 
@@ -38,21 +41,26 @@ class InstallerManager:
         with open(f'{self.root_path}/packages.json', 'w') as f:
             f.write(json.dumps({'installed_packages': installed_packages}))
 
-    def __add_package(self, installed_packages: str, current_package: Package) -> None:
-        installed_packages['installed_packages'].append({"id": current_package.id, 
+    def __add_package(self, current_package: Package) -> None:
+        print(current_package)
+        installed_packages = self.get_installed_packages()
+        installed_packages.append({"id": current_package.id, 
                                                                                         "version": current_package.version})
+        self.__update_installed_packages_json(installed_packages)
 
-    def __remove_package(self, installed_packages: str, current_package: Package) -> None:
-        for package in installed_packages['installed_packages']:
+    def __remove_package(self, current_package: Package) -> None:
+        installed_packages = self.get_installed_packages()
+        for package in installed_packages:
             if package['id'] == current_package.id:
-                installed_packages['installed_packages'].remove(package)
-                self.__update_installed_packages_json(installed_packages)
+                installed_packages.remove(package)
+        self.__update_installed_packages_json(installed_packages)
 
-    def __update_package(self, installed_packages: str, current_package: Package) -> None:
-        for package in installed_packages['installed_packages']:
+    def __update_package(self, current_package: Package) -> None:
+        installed_packages = self.get_installed_packages()
+        for package in installed_packages:
             if package['id'] == current_package.id:
                 package['version'] = current_package.version
-                self.__update_installed_packages_json(installed_packages)
+        self.__update_installed_packages_json(installed_packages)
 
     def __versiontuple(self, version: str) -> Tuple[int]: 
         return tuple(map(int, (version.split("."))))
@@ -85,7 +93,7 @@ class InstallerManager:
 
         for package in recommended_packages:
             if not self.__get_package(package['id'], installed_packages):
-                actions.append((package['id'], [ActionType.INSTALL]))
+                actions.append((Package(package['id'], package['version']), [ActionType.INSTALL]))
             
             if self.__get_package(package['id'], installed_packages):
                 available_actions = [ActionType.UNINSTALL]
@@ -93,14 +101,22 @@ class InstallerManager:
                 if self.__is_older_version(current_package['version'], package['version']):
                     available_actions.append(ActionType.UPDATE)
                 
-                actions.append((package['id'], available_actions))
+                actions.append((Package(package['id'], package['version']), available_actions))
             
         return actions
 
-    def execute_action(self, id: str, action: ActionType):
+    def execute_action(self, package: Package, action: ActionType):
         """
         Execute an action
         """
-        pass
+        if action == ActionType.INSTALL:
+            install_response = [installer.install() for installer in self.installers if installer.id == package.id][0]
+            if install_response: self.__add_package(package)
+            return install_response
+        
+        if action == ActionType.UNINSTALL:
+            install_response = [installer.uninstall() for installer in self.installers if installer.id == package.id][0]
+            if install_response: self.__remove_package(package)
+            return install_response
 
 
