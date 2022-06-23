@@ -35,27 +35,32 @@ const options = {
     },
 };
 
-function import_module(path) {
+function import_component(path) {
     return Vue.defineAsyncComponent(() => loadModule(path, options));
 }
+function import_app(path) {
+    return () => loadModule(path, options);
+}
 
-const _modules = ([
-    App,
+const _modules = [
     Install,
-    Load,
-    Nav,
+    Welcome,
     Select,
+
+    App,
+    Load,
+    NavBar,
     Navigation,
-    Welcome
 ] = [
-    import_module("./js/apps/app.vue"),
-    import_module("./js/apps/install.vue"),
-    import_module("./js/apps/load.vue"),
-    import_module("./js/apps/nav.vue"),
-    import_module("./js/apps/select.vue"),
-    import_module("./js/apps/Navigation.vue"),
-    import_module("./js/apps/welcome.vue"),
-]);
+    import_app("./js/views/install.vue"),
+    import_app("./js/views/welcome.vue"),
+    import_app("./js/views/select.vue"),
+    
+    import_component("./js/components/app.vue"),
+    import_component("./js/components/load.vue"),
+    import_component("./js/components/NavBar.vue"),
+    import_component("./js/components/Navigation.vue"),
+];
 
 const load_comonents = Promise.all([_modules]);
 
@@ -79,7 +84,7 @@ Promise.all([load_comonents, load_document, load_pywebviw]).then(() => {
     });
 
     const app = createApp(App);
-    const navbar = createApp(Nav);
+    const navbar = createApp(NavBar);
 
     app.component("Navigation", Navigation)
     app.component("Loading", Load)

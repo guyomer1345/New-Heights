@@ -1,5 +1,5 @@
 <template>
-    <Navigation :nextPage="next_page">
+    <Navigation nextPage="" :isReady="false">
 
     </Navigation>
     <div class="container">
