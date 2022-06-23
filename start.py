@@ -38,7 +38,7 @@ class Api:
 
     def get_actions(self):
         
-        time.sleep(2) # this sleep is here just for design purpose (remove on prod)
+        time.sleep(1) # this sleep is here just for design purpose (remove on prod)
         return [
             {
                 "id": "python",
