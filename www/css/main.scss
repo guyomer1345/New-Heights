@@ -1,6 +1,7 @@
 :root{
   --red: #ef5350;
   --green: #66bb6a;
+  --updateColor: #13B3F2;
 }
 
 *{
@@ -62,13 +63,16 @@ nav {
       color: white;
     }
 
-    .action-install {
+    .action-install, .action-update {
       right: 0;
       border-top-right-radius: 10px;
       border-bottom-right-radius: 10px;
 
       background: var(--green);
       color: white;
+    }
+    .action-update{
+      background: var(--updateColor);
     }
 
     .action-name {
@@ -85,7 +89,7 @@ nav {
       transition: left .1s, border-radius .1s, width .1s, background-color .1s;
     }
 
-    &.install {
+    &.remove {
       .action-name {
         left: 0;
         width: calc(100% - 50px);
@@ -93,7 +97,15 @@ nav {
         background: var(--red);
       }
     }
-    &.remove {
+    &.update {
+      .action-name {
+        left: 50px;
+        width: calc(100% - 50px);
+        border-radius: 0 9px 9px 0;
+        background: var(--updateColor);
+      }
+    }
+    &.install {
       .action-name {
         background: var(--green);
         left: 50px;

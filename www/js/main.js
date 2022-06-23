@@ -1,5 +1,4 @@
 const { reactive, ref, createApp } = Vue;
-const { createStore } = Vuex;
 const { loadModule, version } = window["vue3-sfc-loader"];
 
 const options = {
@@ -43,23 +42,24 @@ function import_app(path) {
 }
 
 const _modules = [
-    Install,
-    Welcome,
-    Select,
-
     App,
     Load,
     NavBar,
     Navigation,
+    
+    Install,
+    Welcome,
+    Select,
 ] = [
-    import_app("./js/views/install.vue"),
-    import_app("./js/views/welcome.vue"),
-    import_app("./js/views/select.vue"),
     
     import_component("./js/components/app.vue"),
     import_component("./js/components/load.vue"),
     import_component("./js/components/NavBar.vue"),
     import_component("./js/components/Navigation.vue"),
+    
+    import_app("./js/views/install.vue"),
+    import_app("./js/views/welcome.vue"),
+    import_app("./js/views/select.vue"),
 ];
 
 const load_comonents = Promise.all([_modules]);
@@ -87,8 +87,9 @@ Promise.all([load_comonents, load_document, load_pywebviw]).then(() => {
     const navbar = createApp(NavBar);
 
     app.component("Navigation", Navigation)
-    app.component("Loading", Load)
+    console.log(app.component("Loading", Load));
     app.use(router);
+    app.use(store);
     app.mount("#app");
     navbar.mount("#navbar");
 });

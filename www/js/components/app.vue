@@ -13,10 +13,13 @@ export default {
     mounted() {
         M.AutoInit();
         this.$router.push("/");
+        this.$router.push("/select");
     },
     methods: {
         wait_for_promise(promise) {
-            console.log(this.$refs);
+            if (typeof this.$refs.load === "undefined") {
+                return;
+            }
             this.$refs.load.is_loading = true;
             promise.finally(() => {
                 this.$refs.load.is_loading = false;

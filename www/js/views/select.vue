@@ -1,77 +1,93 @@
 <template>
-    <Navigation nextPage="" :isReady="false">
+    <Navigation nextPage="/" :isReady="is_ready()">
 
     </Navigation>
     <div class="container">
         <div id="action-list">
             <div class="action" v-for="action in actions" :class="get_action_class(action)">
-                <div class="icon action-remove" @click="action.selected = 'remove'">
+                <div class="icon action-remove" @click="set_action(action, 'remove')">
                     <i class="fa-solid fa-circle-xmark"></i>
                 </div>
-                <div class="icon action-install" @click="action.selected = 'install'">
+                <div class="icon action-update" v-if="action.actions.includes('update')" @click="set_action(action, 'update')">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </div>
+                <div class="icon action-install" v-else @click="set_action(action, 'install')">
                     <i class="fa-solid fa-circle-arrow-down"></i>
                 </div>
-                <div class="action-name">{{ action.id }}</div>
+                <div class="action-name">{{ action.id }} -- {{ action.selected }}</div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+const Action = {
+    Install: "install",
+    Remove: "remove",
+    Update: "update",
+    None: "",
+}
+
 export default {
     name: "select-app",
-    template: "#select-app",
     emits: ['wait'],
 
     data() {
         return {
-            minutes: 10,
-            actions: [],
-
-            loaded: false,
-            is_changed: false,
+            actions: []
         }
     },
     methods: {
+        set_action(action, selected_action){
+            if (!action.actions.includes(selected_action)) {
+                selected_action = Action.None
+            }
+            action.selected = selected_action;
+            this.$store.commit('setActions', {actions: this.actions})
+        },
         get_action_class(action) {
-            if (action.selected === 'install') {
-                return 'remove'
+            if (action.selected) {
+                return action.selected
             }
-            if (action.selected === 'remove') {
-                return 'install'
+
+            if (action.actions.includes(Action.Remove)) {
+                if (action.actions.includes(Action.Update)) {
+                    return Action.Update
+                }
+                return Action.Install
             }
-            if (action.actions.includes('remove')) {
-                return 'remove'
+            if (action.actions.includes(Action.Install)) {
+                return Action.Remove
             }
-            if (action.actions.includes('install')) {
-                return 'install'
-            }
-            return ''
+            return Action.None
         },
         set_selection(value) {
             this.actions.forEach(action => action.selected = value);
         },
-    },
-    watch: {
-        installers(val) {
-            if (this.loaded) {
-                this.is_changed = true;
-            }
+        is_ready(){
+            return this.actions.some((action) => action.selected !== Action.None)
         }
     },
+    
     mounted() {
         M.AutoInit();
-        if (this.loaded) {
-            return;
-        }
+
         pywebview.api.resize(600);
+        if (this.$store.state.actions.length) {
+            this.actions = this.$store.state.actions
+            return
+        }
         let result = pywebview.api.get_actions().then(actions => {
-            actions.forEach(action => action.selected = "")
-            this.actions = actions
-            this.loaded = true;
+            actions.forEach(action => {
+                action.selected = Action.None;
+                if (action.actions.includes(Action.Update)) {
+                    action.selected = Action.Update
+                }
+
+            });
+            this.actions = actions;
         });
         this.$emit('wait', result)
-
     }
 };
 </script>
