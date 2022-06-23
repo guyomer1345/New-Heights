@@ -1,21 +1,20 @@
 <template>
-  <div class="container">
-    <div id="action-list">
-      <div
-        class="action"
-        v-for="action in actions"
-        :class="get_action_class(action)"
-      >
-        <div class="icon action-remove" @click="action.selected = 'remove'">
-          <i class="fa-solid fa-circle-xmark"></i>
+    <Navigation :nextPage="next_page">
+
+    </Navigation>
+    <div class="container">
+        <div id="action-list">
+            <div class="action" v-for="action in actions" :class="get_action_class(action)">
+                <div class="icon action-remove" @click="action.selected = 'remove'">
+                    <i class="fa-solid fa-circle-xmark"></i>
+                </div>
+                <div class="icon action-install" @click="action.selected = 'install'">
+                    <i class="fa-solid fa-circle-arrow-down"></i>
+                </div>
+                <div class="action-name">{{ action.id }}</div>
+            </div>
         </div>
-        <div class="icon action-install" @click="action.selected = 'install'">
-          <i class="fa-solid fa-circle-arrow-down"></i>
-        </div>
-        <div class="action-name">{{ action.id }}</div>
-      </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -34,17 +33,17 @@ export default {
         }
     },
     methods: {
-        get_action_class(action){
-            if (action.selected === 'install'){
+        get_action_class(action) {
+            if (action.selected === 'install') {
                 return 'remove'
             }
-            if (action.selected === 'remove'){
+            if (action.selected === 'remove') {
                 return 'install'
             }
-            if (action.actions.includes('remove')){
+            if (action.actions.includes('remove')) {
                 return 'remove'
             }
-            if (action.actions.includes('install')){
+            if (action.actions.includes('install')) {
                 return 'install'
             }
             return ''
@@ -54,8 +53,8 @@ export default {
         },
     },
     watch: {
-        installers(val){
-            if (this.loaded){
+        installers(val) {
+            if (this.loaded) {
                 this.is_changed = true;
             }
         }
@@ -72,11 +71,10 @@ export default {
             this.loaded = true;
         });
         this.$emit('wait', result)
-        
+
     }
 };
 </script>
 
 <style>
-
 </style>
