@@ -74,7 +74,7 @@ class Api:
             "status": "OK"
         }
         print(f"Executing {action} on '{id}'")
-        time.sleep(2)
+        time.sleep(1)
         return result
 
     def set_windows(self, window: Window):
