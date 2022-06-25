@@ -91,7 +91,7 @@ if __name__ == '__main__':
     api = Api()
     window = webview.create_window("Heights Install System",
                                    url="www/index.html",
-                                   height=400,
+                                   height=600,
                                    width=800,
                                    frameless=True,
                                    easy_drag=True,
