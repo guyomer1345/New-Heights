@@ -13,7 +13,7 @@ export default {
     mounted() {
         M.AutoInit();
         this.$router.push("/");
-        this.$router.push("/select");
+        this.$router.push("/action_progress");
     },
     methods: {
         wait_for_promise(promise) {
@@ -23,17 +23,16 @@ export default {
             this.$refs.load.is_loading = true;
             promise.finally(() => {
                 this.$refs.load.is_loading = false;
-            })
+            });
         },
-    }
-}
+    },
+};
 </script>
 <style scoped>
 #app-contianer {
     width: 100%;
     height: calc(100vh - 70px);
     overflow-y: scroll;
-
 }
 
 /* ===== Scrollbar CSS ===== */
