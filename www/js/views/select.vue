@@ -1,5 +1,5 @@
 <template>
-    <Navigation nextPage="/" :isReady="is_ready()"></Navigation>
+    <Navigation nextPage="/action_progress" :isReady="is_ready()"></Navigation>
 
     <div class="container">
         <div class="action-item" @click="install_all()">
@@ -11,12 +11,15 @@
                 <div class="icon action-remove" @click="set_action(action, 'remove')">
                     <i class="fa-solid fa-circle-xmark"></i>
                 </div>
-                <div class="icon action-update" v-if="action.actions.includes('update')"
-                    @click="set_action(action, 'update')">
-                    <i class="fa-solid fa-rotate-right"></i>
+                <div
+                    class="icon action-update"
+                    v-if="action.actions.includes('update')"
+                    @click="set_action(action, 'update')"
+                >
+                    <i class="fa-solid fa-circle-arrow-down"></i>
                 </div>
                 <div class="icon action-install" v-else @click="set_action(action, 'install')">
-                    <i class="fa-solid fa-circle-arrow-down"></i>
+                    <i class="fa-solid fa-circle-plus"></i>
                 </div>
                 <div class="action-name">{{ action.id }}</div>
             </div>
@@ -30,61 +33,59 @@ const Action = {
     Remove: "remove",
     Update: "update",
     None: "",
-}
+};
 
 export default {
     name: "select-app",
-    emits: ['wait'],
+    emits: ["wait"],
 
     data() {
         return {
-            actions: []
-        }
+            actions: [],
+        };
     },
     methods: {
         set_action(action, selected_action) {
             if (!action.actions.includes(selected_action)) {
-                selected_action = Action.None
+                selected_action = Action.None;
             }
             action.selected = selected_action;
-            this.$store.commit('setActions', { actions: this.actions })
+            this.$store.commit("setActions", { actions: this.actions });
         },
         install_all() {
-            this.actions.forEach(action => {
+            this.actions.forEach((action) => {
                 if (action.actions.includes(Action.Install)) {
-                    action.selected = Action.Install
+                    action.selected = Action.Install;
                 } else if (action.actions.includes(Action.Update)) {
-                    action.selected = Action.Update
+                    action.selected = Action.Update;
                 } else {
-                    action.selected = Action.None
+                    action.selected = Action.None;
                 }
-                
-
             });
-            this.$store.commit('setActions', { actions: this.actions })
+            this.$store.commit("setActions", { actions: this.actions });
         },
         get_action_class(action) {
             if (action.selected) {
-                return action.selected
+                return action.selected;
             }
 
             if (action.actions.includes(Action.Remove)) {
                 if (action.actions.includes(Action.Update)) {
-                    return Action.Update
+                    return Action.Update;
                 }
-                return Action.Install
+                return Action.Install;
             }
             if (action.actions.includes(Action.Install)) {
-                return Action.Remove
+                return Action.Remove;
             }
-            return Action.None
+            return Action.None;
         },
         set_selection(value) {
-            this.actions.forEach(action => action.selected = value);
+            this.actions.forEach((action) => (action.selected = value));
         },
         is_ready() {
-            return this.actions.some((action) => action.selected !== Action.None)
-        }
+            return this.actions.some((action) => action.selected !== Action.None);
+        },
     },
 
     mounted() {
@@ -92,21 +93,21 @@ export default {
 
         pywebview.api.resize(600);
         if (this.$store.state.actions.length) {
-            this.actions = this.$store.state.actions
-            return
+            this.actions = this.$store.state.actions;
+            return;
         }
-        let result = pywebview.api.get_actions().then(actions => {
-            actions.forEach(action => {
+        let result = pywebview.api.get_actions().then((actions) => {
+            actions.forEach((action) => {
                 action.selected = Action.None;
                 if (action.actions.includes(Action.Update)) {
-                    action.selected = Action.Update
+                    action.selected = Action.Update;
                 }
-
             });
             this.actions = actions;
+            this.$store.commit("setActions", { actions: this.actions });
         });
-        this.$emit('wait', result)
-    }
+        this.$emit("wait", result);
+    },
 };
 </script>
 
@@ -122,7 +123,7 @@ export default {
     margin: 1rem auto;
     font-size: 30px;
     text-align: center;
-    transition: .1s background-color, .1s color;
+    transition: 0.1s background-color, 0.1s color;
     cursor: pointer;
 }
 

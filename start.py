@@ -1,3 +1,4 @@
+import random
 import time
 from typing import Union
 
@@ -32,13 +33,14 @@ class Api:
             ],
             root_path="./system/installations/"
         )
-        
+
     def is_installed(self) -> bool:
         return False
 
     def get_actions(self):
-        
-        time.sleep(0) # this sleep is here just for design purpose (remove on prod)
+
+        # this sleep is here just for design purpose (remove on prod)
+        time.sleep(0)
         return [
             {
                 "id": "python",
@@ -57,7 +59,6 @@ class Api:
     def check_update(self):
         pass
 
-
     def resize(self, height: int):
         width, _ = self._original_size
         self._window.resize(self._window.width, height)
@@ -74,7 +75,7 @@ class Api:
             "status": "OK"
         }
         print(f"Executing {action} on '{id}'")
-        time.sleep(1)
+        time.sleep(random.randrange(2, 5))
         return result
 
     def set_windows(self, window: Window):
@@ -90,10 +91,10 @@ if __name__ == '__main__':
     api = Api()
     window = webview.create_window("Heights Install System",
                                    url="www/index.html",
-                                   height=400,
+                                   height=600,
                                    width=800,
-                                   frameless = True,
-                                   easy_drag = True,
+                                   frameless=True,
+                                   easy_drag=True,
                                    js_api=api,
                                    resizable=False
                                    )

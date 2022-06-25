@@ -50,6 +50,7 @@ const _modules = [
     Install,
     Welcome,
     Select,
+    ActionProgress
 ] = [
     
     import_component("./js/components/app.vue"),
@@ -60,6 +61,7 @@ const _modules = [
     import_app("./js/views/install.vue"),
     import_app("./js/views/welcome.vue"),
     import_app("./js/views/select.vue"),
+    import_app("./js/views/ActionProgress.vue"),
 ];
 
 const load_comonents = Promise.all([_modules]);
@@ -75,8 +77,9 @@ const load_pywebviw = new Promise((resolve) => {
 Promise.all([load_comonents, load_document, load_pywebviw]).then(() => {
     const routes = [
         { path: "/", component: Welcome},
-        { path: "/select", component: Select },
         { path: "/install", component: Install },
+        { path: "/select", component: Select },
+        { path: "/action_progress", component: ActionProgress },
     ];
     const router = VueRouter.createRouter({
         history: VueRouter.createWebHashHistory(),
