@@ -37,6 +37,9 @@ class Api:
     def is_installed(self) -> bool:
         return False
 
+    def install_heights(self, path):
+        time.sleep(3)
+
     def get_actions(self):
 
         # this sleep is here just for design purpose (remove on prod)

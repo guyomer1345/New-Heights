@@ -1,10 +1,12 @@
 <template>
-    <Loading ref="load"></Loading>
-    <div id="app-contianer">
-        <router-view @wait="wait_for_promise" v-slot="{ Component }">
-            <component ref="current_app" :is="Component" />
-        </router-view>
-    </div>
+    <span>
+        <Loading ref="load"></Loading>
+        <div id="app-contianer">
+            <router-view @wait="wait_for_promise" v-slot="{ Component }">
+                <component ref="current_app" :is="Component" />
+            </router-view>
+        </div>
+    </span>
 </template>
 <script>
 // import laod_app from loadModule("./js/apps/components/next_btn.vue", options);
@@ -13,7 +15,7 @@ export default {
     mounted() {
         M.AutoInit();
         this.$router.push("/");
-        this.$router.push("/action_progress");
+        this.$router.push("/install");
     },
     methods: {
         wait_for_promise(promise) {
