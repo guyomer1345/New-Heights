@@ -9,7 +9,7 @@
                 <div class="install-btn" :class="{ active: path }" @click="changeState('installing')"></div>
             </div>
             <div class="content" :class="{ active: currentState == 'installing' }">
-                <h1 style="width: 100%">Installing...</h1>
+                <h2 id="load-text" style="width: 100%">Installing</h2>
             </div>
         </span>
     </span>
@@ -53,7 +53,7 @@ export default {
     },
     mounted() {
         this.isActive = true;
-        this.currentState = State.Installing;
+        // this.currentState = State.Installing;
         this.currentState = State.Path;
 
         // setInterval(() => {
@@ -74,6 +74,15 @@ export default {
     to {
         width: 0%;
     }
+}
+#load-text {
+    color: black;
+    opacity: 0.8;
+    font-weight: bold;
+}
+#load-text::after {
+    content: "...";
+    animation: loading 1.6s linear infinite;
 }
 .brackets > * {
     display: inline-block;
@@ -199,15 +208,28 @@ export default {
 }
 
 .brackets.animate.active:before {
-    animation: pulse 0.4s 0.5s alternate infinite ease-in-out;
+    animation: pulse 0.8s 0.5s alternate infinite steps(9);
 }
 .brackets.animate.active:after {
-    animation: pulse 0.4s 0.8s alternate infinite ease-in-out;
+    animation: pulse 0.8s 0.8s alternate infinite steps(9);
 }
 @keyframes pulse {
     to {
-        /* transform: translateY(-50%) scale(0.9); */
-        opacity: 0.2;
+        opacity: 0;
+    }
+}
+@keyframes loading {
+    0% {
+        content: "\00a0\00a0\00a0";
+    }
+    25% {
+        content: ".\00a0\00a0";
+    }
+    50% {
+        content: "..\00a0";
+    }
+    75% {
+        content: "...";
     }
 }
 @keyframes randomize {
