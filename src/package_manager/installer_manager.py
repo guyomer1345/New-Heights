@@ -23,7 +23,7 @@ class Action:
 class InstallerManager:
     def __init__(self, installers: List[IInstaller], root_path: str):
         self.installers = installers
-        self.root_path = root_path
+        self._root_path = root_path
 
     def get_installed_packages(self) -> List[Dict[str, Any]]:
         """
@@ -36,6 +36,14 @@ class InstallerManager:
             return []
         
         return installed_packages['installed_packages']
+
+    @property
+    def root_path(self):
+        return self._root_path
+    
+    @root_path.setter
+    def root_path(self, path):
+        self._root_path = path
 
     def __update_installed_packages_json(self, installed_packages: List[Dict[str, str]]) -> None:
         with open(f'{self.root_path}/packages.json', 'w') as f:

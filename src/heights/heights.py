@@ -13,6 +13,7 @@ class Heights:
         return self.__versiontuple(current_version) > self.__versiontuple(latest_version)
 
     def is_installed(self) -> bool:
+        print(f'PATH IN IS_INSTALLED = {self.path}')
         if not os.path.exists(os.path.join(self.path, 'status.json')):
             return False
         

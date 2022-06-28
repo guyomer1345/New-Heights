@@ -1,5 +1,5 @@
 from src.package_manager.exe_installer import ExeInstaller
-from src.package_manager.constants import Apps, DOWNLOADS_DIR
+from src.package_manager.constants import Apps
 
 miniconda = Apps.MiniConda.value
 seven_zip = Apps.SevenZip.value
