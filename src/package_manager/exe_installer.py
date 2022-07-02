@@ -108,8 +108,9 @@ class ExeInstaller(IInstaller):
             for file in files:
                 if 'uninstall' in file.lower() and 'exe' in file.lower():
                     return (os.path.join(root, file))
-
-        raise(FileNotFoundError(f"Could'nt find the uninstaller for {self.id}"))
+        
+        raise(FileNotFoundError(f"Couldn't find the uninstaller for {self.id},"+
+                                                f"try removing the following folder manually: {self.install_path}"))
 
     def __run_uninstaller(self, uninstaller) -> None:
         proc = subprocess.Popen(f'"{uninstaller}" /S',
@@ -119,8 +120,10 @@ class ExeInstaller(IInstaller):
         out, err = proc.communicate()
         err = err.decode()
 
-        if err:
-            raise(ExeUninstallerError(f"Failed to uninstall {self.id}: {err}"))
+        shutil.rmtree(self.install_path, ignore_errors=True)
+        if err or os.path.isdir(self.install_path):
+            raise(ExeUninstallerError(f"Failed to uninstall {self.id}: {err}, "+
+                                                     f"try removing the following folder manually: {self.install_path}"))
 
     def install(self) -> bool:
         """
@@ -151,7 +154,7 @@ class ExeInstaller(IInstaller):
         except FileNotFoundError as e:
             logging.error(e)
             return False
-
+        
         try:
             self.__run_uninstaller(uninstaller)
         except ExeUninstallerError as e:

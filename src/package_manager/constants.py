@@ -8,7 +8,7 @@ INSTALLATIONS_DIR = os.path.join(WORK_DIR,
 
 class Apps(Enum):
     class MiniConda(EnumMeta):
-        APP_NAME = 'Miniconda'
+        APP_NAME = 'Miniconda3'
         INSTALLATION_FOLDER = os.path.join(INSTALLATIONS_DIR, 'Miniconda3')
         URL = "https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe"
         INSTALL_COMMAND = 'start /wait "" "%s" /AddToPath=0 \

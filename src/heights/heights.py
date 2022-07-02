@@ -1,8 +1,10 @@
 import json
 import os
+import sys
 
 class Heights:
     def __init__(self, version: str):
+        self.id = "heights.exe"
         self.version = version
         self.path = os.getcwd()
 
@@ -13,12 +15,18 @@ class Heights:
         return self.__versiontuple(current_version) > self.__versiontuple(latest_version)
 
     def is_installed(self) -> bool:
-        print(f'PATH IN IS_INSTALLED = {self.path}')
         if not os.path.exists(os.path.join(self.path, 'status.json')):
             return False
         
         return True
-  
+
+    def __copy_exe(self, install_path: str):
+        with open(f'{self.path}/{self.id}', 'rb') as reader:
+            data = reader.read()
+        
+        with open(f'{install_path}/{self.id}', 'wb') as writer:
+            writer.write(data)
+
     def is_up_to_date(self) -> bool:
         if not self.is_installed():
             return False
@@ -32,15 +40,19 @@ class Heights:
         
         return True
 
-    def install(self, path) -> None:
+    def install(self, install_path: str) -> None:
+        self.__copy_exe(install_path)
 
         status = {
             'is_installed': True,
             'version': self.version
         }
 
-        with open(f'{path}/status.json', 'w') as f:
+        with open(f'{install_path}/status.json', 'w') as f:
             f.write(json.dumps(status))
+
+        os.system(f'cd {install_path} && {self.id}')
+        sys.exit()
 
     def update() -> None:
         return NotImplementedError()

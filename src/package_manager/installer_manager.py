@@ -1,9 +1,10 @@
 from src.package_manager.i_installer import IInstaller
-from typing import List, Tuple
+from src.package_manager.constants import INSTALLATIONS_DIR
 from dataclasses import dataclass
-from typing import Dict, Any
+from typing import List, Tuple, Dict, Any
 from enum import Enum
 import json
+import os
 
 @dataclass
 class Package:
@@ -32,7 +33,7 @@ class InstallerManager:
         try:
             with open(f'{self.root_path}/packages.json', 'r') as f:
                 installed_packages = json.loads(f.read())
-        except FileNotFoundError:
+        except (json.JSONDecodeError, FileNotFoundError):
             return []
         
         return installed_packages['installed_packages']
@@ -50,7 +51,6 @@ class InstallerManager:
             f.write(json.dumps({'installed_packages': installed_packages}))
 
     def __add_package(self, current_package: Package) -> None:
-        print(current_package)
         installed_packages = self.get_installed_packages()
         installed_packages.append({"id": current_package.id, 
                                                                                         "version": current_package.version})
@@ -79,6 +79,12 @@ class InstallerManager:
     def __is_older_version(self, current_version: str, latest_version: str) -> bool:
         return self.__versiontuple(current_version) < self.__versiontuple(latest_version)
 
+    def __validiate_packages(self):
+        packages = self.get_installed_packages()  
+        for package in packages:
+            if package['id'] not in os.listdir(INSTALLATIONS_DIR):
+                self.__remove_package(Package(package['id'], package['version']))
+
     def get_recommended_packages(self) -> List[Dict[str, Any]]:
         """
         returns the recommended packages for heights
@@ -95,6 +101,7 @@ class InstallerManager:
         """
         Returns all the available actions for current user (un/install, update)
         """
+        self.__validiate_packages()
         actions = []
         recommended_packages = self.get_recommended_packages()
         installed_packages = self.get_installed_packages()
